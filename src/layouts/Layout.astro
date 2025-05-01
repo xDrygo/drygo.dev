@@ -1,0 +1,63 @@
+---
+import type { Language } from '@/types/language.type';
+import './src/styles/global.css'
+import '@fontsource-variable/work-sans' 
+
+interface Props {
+	lang: Language;
+	t: any;
+	title: string;
+}
+
+const { lang, t, title } = Astro.props;
+---
+
+<!doctype html>
+<html class="h-full" lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<link rel="icon" type="image/webp" href="/favicon.webp" />
+		<meta name="description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
+		
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="https://www.drygo.dev"/>
+		<meta property="og:title" content="drygo.dev 💫"/>
+		<meta property="og:description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
+		<meta property="og:image" content="@/public/og.jpg"/>
+		<meta property="og:locale" content="es_MX" />
+
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:site" content=""/>
+		<meta name="twitter:creator" content="Drygo"/>
+		<meta name="twitter:title" content="drygo.dev 💫"/>
+		<meta name="twitter:description" content=""/>
+	</head>
+  	<body class="h-full flex flex-col">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		color-scheme: light light;
+	}
+	html {
+		font-family: 'Work Sans Variable', sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background: rgb(253, 246, 255);
+		display: flex;
+		flex-direction: column;
+		height: 100vh;  /* Cambié min-height a height */
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+</style>

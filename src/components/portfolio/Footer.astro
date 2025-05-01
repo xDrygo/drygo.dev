@@ -1,0 +1,26 @@
+---
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<footer class="rounded-lg shadow-sm m-4 bg-[#fac5ff] backdrop-blue-lg w-full xl:w-[1120px] mx-auto mb-10">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between font-semibold">
+      <span class="text-sm text-[#544657] sm:text-center">© 2025 <a href="https://drygo.dev/" class="hover:underline">Drygo</a>. {t.portfolio.footer.copyright}
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-[#544657] sm:mt-0">
+        <li>
+            <a href="#about" class="hover:underline me-4 md:me-6">{t.portfolio.footer.buttons.about}</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6">{t.portfolio.footer.buttons.top}</a>
+        </li>
+    </ul>
+    </div>
+</footer>

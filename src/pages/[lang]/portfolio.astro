@@ -1,0 +1,194 @@
+---
+export function getStaticPaths () {
+    return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+// Components
+import Header from '@/components/portfolio/Header.astro';
+import Badge from '@/components/portfolio/Badge.astro';
+import Layout from '@/layouts/Layout.astro';
+import SocialTag from '@/components/portfolio/SocialTag.astro';
+import SectionContainer from '@/components/portfolio/SectionContainer.astro';
+import MinecraftProyects from '@/components/portfolio/MinecraftProyects.astro';
+import AboutMe from '@/components/portfolio/AboutMe.astro';
+import Resources from '@/components/portfolio/Resources.astro';
+import OtherProyects from '@/components/portfolio/OtherProyects.astro';
+import Footer from '@/components/portfolio/Footer.astro';
+import Contact from '@/components/portfolio/Contact.astro';
+
+// Icons
+import GitHubIcon from '@/icons/GitHub.astro';
+import XIcon from '@/icons/X.astro';
+import ModrinthIcon from '@/icons/Modrinth.astro';
+import CodeIcon from '@/icons/Code.astro';
+import ResourcesIcon from '@/icons/Resources.astro';
+import SelfIcon from '@/icons/Self.astro';
+import CubeIcon from '@/icons/Cube.astro';
+import MailIcon from '@/icons/Mail.astro';
+
+// Lang Imports
+import en from '@/i18n/en';
+import es from '@/i18n/es';
+
+import type { Language } from '@/types/language.type';
+import type { Translations } from '@/types/translations.type';
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es };
+const t: Translations = translations[lang];
+---
+
+<Layout lang={lang} t={t} title={t.portfolio.title} >
+	<main class="px-10">
+		<div class="absolute top-0 left-0 -z-10 h-full w-full bg-rgb(253, 246, 255)">
+			<div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(217,109,244,0.5)] opacity-50 blur-[80px]"></div>
+		</div>
+		<Header lang={lang} t={t}/>
+		<SectionContainer class="lg:w-[40%] py-10 pt-35 pb-10 mx-auto text-center">
+			<img class="rounded-4xl size-20 mb-4 mx-auto" src="/drygo.webp" alt="Drygo photo." />
+			<h1 class="text-[#e4a5f0] text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-8 justify-center items-center">
+				{t.portfolio.hero.title}
+				<a href="https://github.com/xDrygo" target="_blank" rel="noopener" class="flex justify-center items-center">
+					<Badge>{t.portfolio.hero.badge}!</Badge>
+				</a>
+			</h1>
+			<h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px] mx-auto" set:html={t.portfolio.hero.summary}> </h2>
+		
+			<nav class="flex gap-2 py-5 flex-wrap justify-center">
+				<SocialTag href="https://github.com/xDrygo">
+					<GitHubIcon class="size-4 lg:size-6" /> GitHub
+				</SocialTag>
+				<SocialTag href="https://x.com/eldrygo">
+					<XIcon class="size-3.5 lg:size-5" />
+					<span class="block sm:hidden">X</span>
+					<span class="hidden sm:block">X (Twitter)</span>
+				</SocialTag>
+				<SocialTag id="copiarMail1">
+					<MailIcon class="size-4 lg:size-6" /> contact.drygo@gmail.com
+				</SocialTag>
+				<SocialTag href="https://modrinth.com/user/Drygo">
+					<ModrinthIcon class="size-4 lg:size-6" /> Modrinth
+				</SocialTag>
+			</nav>
+		</SectionContainer>
+	
+		<SectionContainer id="about" class="lg:w-[80%] py-4">
+			<h2 class="text-2xl text-[#2f2331] font-semibold mb-6 flex gap-x-3 items-center justify-center">
+				<SelfIcon clase="size-7" />
+				{t.portfolio.about.title}
+			</h2>
+			<AboutMe lang={lang} t={t} />
+		</SectionContainer>
+		<SectionContainer id="minecraft-proyects" class="lg:w-[80%] py-4">
+			<h2 class="text-2xl text-[#2f2331] font-semibold mb-6 flex gap-x-3 items-center justify-center">
+				<CubeIcon clase="size-7" />
+				{t.portfolio.minecraft_proyects.title}
+			</h2>
+			<MinecraftProyects lang={lang} t={t} />
+		</SectionContainer>
+		<SectionContainer id="resources" class="lg:w-[80%] py-4">
+			<h2 class="text-2xl text-[#2f2331] font-semibold mb-6 flex gap-x-3 items-center justify-center">
+				<ResourcesIcon clase="size-7" />
+				{t.portfolio.resources.title}
+			</h2>
+			<Resources lang={lang} t={t} />
+		</SectionContainer>
+		<SectionContainer id="other-proyects" class="lg:w-[80%] py-4">
+			<h2 class="text-2xl text-[#2f2331] font-semibold mb-6 flex gap-x-3 items-center justify-center">
+				<CodeIcon clase="size-7" />
+				{t.portfolio.other_proyects.title}
+			</h2>
+			<OtherProyects lang={lang} t={t} />
+		</SectionContainer>
+		<SectionContainer id="contact" class="lg:w-[80%] py-4">
+			<h2 class="text-2xl text-[#2f2331] font-semibold mb-6 flex gap-x-3 items-center justify-center">
+				<MailIcon clase="size-7" />
+				{t.portfolio.contact.title}
+			</h2>
+			<Contact lang={lang} t={t} />
+		</SectionContainer>
+		<Footer lang={lang} t={t} />
+		<div id="mail_toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#f8d3ff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out">
+			{t.portfolio.toast.mail}
+		</div>
+	</main>
+</Layout>
+
+  
+<script type="module" is:inline>
+    const boton = document.getElementById('copiarMail1');
+    const texto = `contact.drygo@gmail.com`;
+    const toast = document.getElementById('mail_toast');
+  
+    boton.addEventListener('click', async () => {
+      try {
+        // Copiar al portapapeles
+        await navigator.clipboard.writeText(texto);
+  
+        // Mostrar el toast
+        toast.classList.remove('hidden');
+  
+        // Añadir animación de rebote con escala
+        toast.classList.add('opacity-100', 'scale-110');
+        
+        // Forzar la reflow para que la animación se ejecute
+        toast.offsetHeight; // Este truco hace que el navegador "vea" el cambio de clases.
+  
+        // Reemplazar la animación con la versión sin escala
+        toast.classList.remove('scale-110');
+        toast.classList.add('animate-toastEnter');
+  
+        // Ocultar el toast después de 3 segundos con animación de desaparición
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'animate-toastEnter');
+          toast.classList.add('opacity-0');
+          
+          // Volver a ocultar el toast después de la animación de fade-out
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 300); // Tiempo de espera para que termine la animación de fade-out
+        }, 3000);
+  
+      } catch (err) {
+        console.error('Error al copiar al portapapeles: ', err);
+      }
+    });
+</script>
+<script type="module" is:inline>
+    const boton = document.getElementById('copiarMail2');
+    const texto = `contact.drygo@gmail.com`;
+    const toast = document.getElementById('mail_toast');
+  
+    boton.addEventListener('click', async () => {
+      try {
+        // Copiar al portapapeles
+        await navigator.clipboard.writeText(texto);
+  
+        // Mostrar el toast
+        toast.classList.remove('hidden');
+  
+        // Añadir animación de rebote con escala
+        toast.classList.add('opacity-100', 'scale-110');
+        
+        // Forzar la reflow para que la animación se ejecute
+        toast.offsetHeight; // Este truco hace que el navegador "vea" el cambio de clases.
+  
+        // Reemplazar la animación con la versión sin escala
+        toast.classList.remove('scale-110');
+        toast.classList.add('animate-toastEnter');
+  
+        // Ocultar el toast después de 3 segundos con animación de desaparición
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'animate-toastEnter');
+          toast.classList.add('opacity-0');
+          
+          // Volver a ocultar el toast después de la animación de fade-out
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 300); // Tiempo de espera para que termine la animación de fade-out
+        }, 3000);
+  
+      } catch (err) {
+        console.error('Error al copiar al portapapeles: ', err);
+      }
+    });
+</script>

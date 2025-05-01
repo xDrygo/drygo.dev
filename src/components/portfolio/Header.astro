@@ -1,0 +1,130 @@
+---
+import LanguageIcon from "@/icons/Language.astro";
+
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-[960px] py-4 px-8">
+  <div class="bg-white/20 backdrop-blur-md shadow-lg rounded-xl p-4 w-full mx-auto flex justify-between items-center">
+    <!-- Navigation Card -->
+    <div class="flex-grow">
+      <nav class="flex flex-row gap-x-6 flex-wrap justify-center">
+        <!-- Botón About Me -->
+        <div class="relative">
+          <a
+            href="#about"
+            class="px-6 py-3 text-[#2f2331] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] hover:rounded-md hover:shadow-lg will-change-transform"
+          >
+            {t.portfolio.header.nav.about_me}
+          </a>
+        </div>
+
+        <!-- Botón Minecraft Projects -->
+        <div class="relative">
+          <a
+            href="#minecraft-proyects"
+            class="px-6 py-3 text-[#2f2331] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] hover:rounded-md hover:shadow-lg will-change-transform"
+          >
+            {t.portfolio.header.nav.minecraft_proyects}
+          </a>
+        </div>
+
+        <!-- Botón Resources -->
+        <div class="relative">
+          <a
+            href="#resources"
+            class="px-6 py-3 text-[#2f2331] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] hover:rounded-md hover:shadow-lg will-change-transform"
+          >
+            {t.portfolio.header.nav.resources}
+          </a>
+        </div>
+
+        <!-- Botón Other Projects -->
+        <div class="relative">
+          <a
+            href="#other-proyects"
+            class="px-6 py-3 text-[#2f2331] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] hover:rounded-md hover:shadow-lg will-change-transform"
+          >
+            {t.portfolio.header.nav.other_proyects}
+          </a>
+        </div>
+
+        <!-- Botón Contact -->
+        <div class="relative">
+          <a
+            href="#contact"
+            class="px-6 py-3 text-[#2f2331] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] hover:rounded-md hover:shadow-lg will-change-transform"
+          >
+            {t.portfolio.header.nav.contact}
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Language Selection Card outside of the header navigation -->
+<header class="fixed top-6 right-6 transform -translate-x-1/2 z-50 w-full max-w-[60px] py-4 px-8">
+  <button
+    id="languageButton"
+    class="flex justify-center items-center w-12 h-12 bg-white/40 p-2 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-[#fef9ff] will-change-transform"
+  >
+    <LanguageIcon class="w-6 h-6 text-[#2f2331]" />
+  </button>
+
+  <div id="languageMenu" class="hidden absolute top-14 right-0 bg-white/20 p-4 shadow-lg rounded-md w-[150px]">
+    <ul>
+      <li>
+        <a
+          href={`/en${Astro.url.pathname.replace(/^\/(en|es)/, '')}`}
+          class="flex items-center gap-2 px-4 py-2 text-gray-800 hover:bg-gray-200"
+        >
+          <img src="/portfolio/flags/US.png" alt="English" class="w-7 h-5 rounded" />
+          <span>{t.languageOptions.en}</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={`/es${Astro.url.pathname.replace(/^\/(en|es)/, '')}`}
+          class="flex items-center gap-2 px-4 py-2 text-gray-800 hover:bg-gray-200"
+        >
+          <img src="/portfolio/flags/MX.png" alt="Mexico flag" class="w-7 h-5 rounded" />
+          <span>{t.languageOptions.es}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Toggle the language menu
+  function toggleLanguageMenu() {
+    const menu = document.getElementById('languageMenu');
+    
+    // Check if the menu exists
+    if (menu !== null) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
+  // Add event listener for button click to toggle menu
+  document.getElementById('languageButton')?.addEventListener('click', toggleLanguageMenu);
+
+  // Close the language menu if clicked outside
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('languageMenu');
+    const target = e.target as HTMLElement;
+    
+    if (menu !== null && !menu.contains(target) && !target.closest('#languageButton')) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>

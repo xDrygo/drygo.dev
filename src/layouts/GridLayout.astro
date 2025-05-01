@@ -1,0 +1,57 @@
+---
+import Profile from '@/components/bento/Profile.astro';
+import GitHub from '@/components/bento/GitHub.astro';
+import X from '@/components/bento/X.astro';
+import Modrinth from '@/components/bento/Modrinth.astro';
+import Mail from '@/components/bento/Mail.astro';
+import Twitch from '@/components/bento/Twitch.astro';
+import Portfolio from '@/components/bento/Portfolio.astro';
+import Discord from '@/components/bento/Discord.astro';
+import YouTube from '@/components/bento/YouTube.astro';
+
+
+import en from '@/i18n/en';
+import es from '@/i18n/es';
+
+import type { Language } from '@/types/language.type';
+import type { Translations } from '@/types/translations.type';
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es };
+const t: Translations = translations[lang];
+---
+
+<div class="relative flex items-center justify-center w-screen h-screen p-4 bg-[#231c23] overflow-hidden">
+  <!-- Video de fondo -->
+  <div class="absolute inset-0 z-0">
+    <video
+      class="w-full h-full object-cover"
+      src="/bento/background.webm"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
+    <!-- Capa negra + blur sobre el video -->
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  </div>
+
+  <!-- Card principal -->
+  <div class="relative z-10 w-[95vw] h-[95vh] rounded-2xl shadow-xl overflow-hidden">
+    <!-- Capa translúcida detrás del contenido -->
+    <div class="absolute inset-0 bg-[#151515]/25 z-0 rounded-2xl"></div>
+
+    <!-- Contenido encima del fondo translúcido -->
+    <header class="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-3 w-full h-full p-8">
+      <Mail lang={lang} t={t}/>
+      <Portfolio lang={lang} t={t}/>
+      <X />
+      <Modrinth />
+      <Profile />
+      <GitHub />
+      <Twitch />
+      <Discord />
+      <YouTube />
+    </header>
+  </div>
+</div>

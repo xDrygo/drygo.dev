@@ -1,0 +1,28 @@
+---
+import Icon from '@/icons/Book.astro'
+
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<a
+  href="/portfolio"
+  class="group p-8 text-[#fff3ff] hover:text-[#fff9ff] rounded-4xl transition-all duration-300 border-4 w-full flex flex-col justify-center items-center
+  bg-[#ffd3ff]/5 hover:bg-[#ffd3ff]/15 border-[#ffd3ff]/30 hover:border-[#ffd3ff]"
+>
+  <Icon class="w-24 h-24 transition-transform duration-300 group-hover:scale-110" />
+  <span class="mt-4 text-3xl font-semibold">{t.index.portfolio}</span>
+</a>
+
+<style>
+  .github {
+    grid-area: 2 / 4 / 4 / 5;
+  }
+</style>

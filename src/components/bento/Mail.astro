@@ -1,0 +1,29 @@
+---
+import Icon from '@/icons/Mail.astro'
+
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+<a
+  href="https://github.com/xdrygo"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group p-8 text-[#fffccf] hover:text-[#fffde1] rounded-4xl transition-all duration-300 border-4 w-full flex flex-col justify-center items-center
+  bg-[#fffabb]/5 hover:bg-[#fffabb]/15 border-[#fffabb]/30 hover:border-[#fffabb]"
+>
+  <Icon class="w-24 h-24 transition-transform duration-300 group-hover:scale-110" />
+  <span class="mt-4 text-3xl font-semibold">{t.index.email}</span>
+</a>
+
+<style>
+  .github {
+    grid-area: 2 / 4 / 4 / 5;
+  }
+</style>

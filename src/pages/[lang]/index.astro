@@ -1,0 +1,23 @@
+---
+import es from "../../i18n/es";
+import en from "../../i18n/en";
+import type { Language } from "../../types/language.type";
+import type { Translations } from '../../types/translations.type';
+
+import Layout from '@/layouts/Layout.astro';
+import GridLayout from '@/layouts/GridLayout.astro';
+
+export function getStaticPaths () {
+    return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+export const defaultRedirect =  "/en";
+
+const lang = Astro.params.lang as Language;
+const translations = { en, es };
+const t: Translations = translations[lang];
+---
+
+<Layout lang={lang} t={t} title={t.index.title}>
+	<GridLayout />
+</Layout>

@@ -1,0 +1,90 @@
+---
+import JavaScriptIcon from '@/icons/JavaScript.astro';
+import TypeScriptIcon from '@/icons/TypeScript.astro';
+import JavaIcon from '@/icons/Java.astro';
+import TailwindIcon from '@/icons/Tailwind.astro';
+import AstroIcon from '@/icons/AstroIcon.astro';
+import HTMLIcon from '@/icons/HTML.astro';
+import CSSIcon from '@/icons/CSS.astro';
+import MavenIcon from '@/icons/Maven.astro';
+
+const TECHNOLOGIES = [
+    { name: "CSS", class: "text-[#285aec]", icon: CSSIcon },
+    { name: "HTML", class: "text-[#ff5e23]", icon: HTMLIcon },
+    { name: "Java", class: "text-[#ed9140]", icon: JavaIcon },
+    { name: "Maven", class: "text-[#ba2046]", icon: MavenIcon },
+];
+const TECHNOLOGIES_ESTUDIANDO = [
+    { name: "JavaScript", class: "text-[#f0db4f]", icon: JavaScriptIcon },
+    { name: "TypeScript", class: "text-[#3178c6]", icon: TypeScriptIcon },
+    { name: "Tailwind", class: "text-[#73bcf6]", icon: TailwindIcon },
+    { name: "Astro", class: "text-[#f24c51]", icon: AstroIcon }
+];
+
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+<section class="mx-auto pb-20">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
+    
+    <!-- Card -->
+    <div class="bg-white backdrop-blur-md border border-white/20 rounded-3xl shadow-xl p-8 flex flex-col md:flex-row gap-8 w-full md:w-3/4">
+      
+      <!-- Texto Sobre Mí -->
+      <div class="flex-1 justify-start text-start md:text-left">
+        <h2 class="text-3xl font-bold text-[#c96ddd] mb-6">{t.portfolio.about.content.title}</h2>
+        <p class="text-base mb-6" set:html={t.portfolio.about.content.summary_1}>
+        </p>
+        <p class="text-base mb-6" set:html={t.portfolio.about.content.summary_2}>
+        </p>
+      </div>
+
+      <!-- Tecnologías -->
+      <div class="flex flex-col text-end gap-4 w-1/4"> <!-- Añadí justify-center y items-center -->
+        <div>
+          <h3 class="text-3xl font-bold text-[#c96ddd] mb-6">{t.portfolio.about.technologies.title}</h3>
+          
+          <ul class="flex flex-wrap justify-end gap-2">
+            {TECHNOLOGIES.map(tech => (
+              <li>
+                <a class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-2 shadow-md ${tech.class} hover:scale-105 transition`}>
+                  <tech.icon class="size-4" />
+                  {tech.name}
+                </a>
+              </li>
+            ))}  
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold text-[#c96ddd] mb-6">{t.portfolio.about.technologies.studying}</h3>
+          
+          <ul class="flex flex-wrap justify-end gap-2">
+            {TECHNOLOGIES_ESTUDIANDO.map(tech => (
+              <li>
+                <a class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-2 shadow-md ${tech.class} hover:scale-105 transition`}>
+                  <tech.icon class="size-4" />
+                  {tech.name}
+                </a>
+              </li>
+            ))}  
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .highlight {
+    color: #de6ff4;
+    font-weight: 600;
+  }
+</style>

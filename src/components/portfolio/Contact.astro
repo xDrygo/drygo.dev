@@ -1,0 +1,112 @@
+---
+import GitHubIcon from '@/icons/GitHub.astro';
+import XIcon from '@/icons/X.astro';
+import TwitchIcon from '@/icons/Twitch.astro';
+import ModrinthIcon from '@/icons/Modrinth.astro';
+import DiscordIcon from '@/icons/Discord.astro';
+import YouTubeIcon from '@/icons/YouTube.astro';
+
+import type { Language } from "@/types/language.type";
+import type { Translations } from '@/types/translations.type';
+
+interface Props {
+  lang: Language;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<section class="w-3/5 mx-auto pb-20">
+    <article class="col-span-1 bg-white backdrop-blur-md border border-white/20 rounded-2xl shadow-xl overflow-hidden hover:scale-[1.01] transition flex flex-col pt-12 pb-12 min-h-[12px]">
+        <div class="flex justify-center items-center space-x-4">
+          <a
+          id="copiarMail2"
+          class="font-medium text-lg rounded-full bg-gradient-to-r from-[#f7c8ff] to-[#f6a2ff] border border-[#623267]/10 py-3 px-12 mb-6 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition transform"
+          >
+            {t.portfolio.contact.button_mail}
+          </a>
+        </div>
+        <div class="flex justify-center items-center space-x-4">
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              href="https://twitch.tv/eldrygo" target="_blank" rel="noopener"
+            >
+            <TwitchIcon class="size-5.5 lg:size-6" />
+            </a>
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              href="https://modrinth.com/user/Drygo" target="_blank" rel="noopener"
+            >
+            <ModrinthIcon class="size-5.5 lg:size-6" />
+            </a>
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              href="https://github.com/xDrygo" target="_blank" rel="noopener"
+            >
+            <GitHubIcon class="size-5.5 lg:size-6" />
+            </a>
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              href="https://x.com/eldrygo" target="_blank" rel="noopener"
+            >
+            <XIcon class="size-4.75 lg:size-5.5" />
+            </a>
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              id="copiarDiscord"
+            >
+            <DiscordIcon class="size-6 lg:size-7" />
+            </a>
+            <a
+              class="rounded-full bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md text-[#2f2331] flex justify-center items-center gap-x-2 hover:scale-110 active:scale-95 transition"
+              href="https://youtube.com/@eldrygo" target="_blank" rel="noopener"
+            >
+                <YouTubeIcon class="size-6 lg:size-7" />
+            </a>
+        </div>
+    </article>
+</section>
+
+<div id="discord_toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#c9cdff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out">
+  {t.portfolio.toast.discord}
+</div>
+<script type="module" is:inline>
+    const boton = document.getElementById('copiarDiscord');
+    const texto = `xdrygo`;
+    const toast = document.getElementById('discord_toast');
+  
+    boton.addEventListener('click', async () => {
+      try {
+        // Copiar al portapapeles
+        await navigator.clipboard.writeText(texto);
+  
+        // Mostrar el toast
+        toast.classList.remove('hidden');
+  
+        // Añadir animación de rebote con escala
+        toast.classList.add('opacity-100', 'scale-110');
+        
+        // Forzar la reflow para que la animación se ejecute
+        toast.offsetHeight; // Este truco hace que el navegador "vea" el cambio de clases.
+  
+        // Reemplazar la animación con la versión sin escala
+        toast.classList.remove('scale-110');
+        toast.classList.add('animate-toastEnter');
+  
+        // Ocultar el toast después de 3 segundos con animación de desaparición
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'animate-toastEnter');
+          toast.classList.add('opacity-0');
+          
+          // Volver a ocultar el toast después de la animación de fade-out
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 300); // Tiempo de espera para que termine la animación de fade-out
+        }, 3000);
+  
+      } catch (err) {
+        console.error('Error al copiar al portapapeles: ', err);
+      }
+    });
+</script>
