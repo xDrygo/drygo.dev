@@ -1,5 +1,6 @@
 ---
 import type { Language } from '@/types/language.type';
+
 import '@/styles/global.css'
 import '@fontsource-variable/work-sans' 
 
@@ -22,17 +23,18 @@ const { lang, t, title } = Astro.props;
 		<meta name="description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
 		
 		<meta property="og:type" content="website"/>
-		<meta property="og:url" content="https://www.drygo.dev"/>
+		<meta property="og:url" content="https://drygo-dev.vercel.app/"/>
 		<meta property="og:title" content="drygo.dev 💫"/>
 		<meta property="og:description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
-		<meta property="og:image" content="@/public/og.jpg"/>
+		<meta property="og:image" content="../../public/og.jpg"/>
 		<meta property="og:locale" content="es_MX" />
 
 		<meta name="twitter:card" content="summary_large_image"/>
-		<meta name="twitter:site" content=""/>
+		<meta name="twitter:image" content="../../public/og.jpg"/>
+		<meta name="twitter:site" content="@eldrygo"/>
 		<meta name="twitter:creator" content="Drygo"/>
 		<meta name="twitter:title" content="drygo.dev 💫"/>
-		<meta name="twitter:description" content=""/>
+		<meta name="twitter:description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
 	</head>
   	<body class="h-full flex flex-col">
 		<div id="mail_toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#f8d3ff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out">
