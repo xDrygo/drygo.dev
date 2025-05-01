@@ -3,9 +3,7 @@ import Icon from '@/icons/Discord.astro'
 ---
 
 <a
-  href="https://github.com/xdrygo"
-  target="_blank"
-  rel="noopener noreferrer"
+  id="copiarDiscord1"
   class="group p-8 text-[#97aeff] hover:text-[#c3d0ff] rounded-4xl transition-all duration-300 border-4 w-full flex flex-col justify-center items-center
   bg-[#7289da]/5 hover:bg-[#7289da]/15 border-[#7289da]/30 hover:border-[#7289da]"
 >
@@ -18,3 +16,42 @@ import Icon from '@/icons/Discord.astro'
     grid-area: 2 / 4 / 4 / 5;
   }
 </style>
+<script type="module" is:inline>
+  const boton = document.getElementById('copiarDiscord1');
+  const texto = `xdrygo`;
+  const toast = document.getElementById('discord_toast');
+
+  boton.addEventListener('click', async () => {
+    try {
+      // Copiar al portapapeles
+      await navigator.clipboard.writeText(texto);
+
+      // Mostrar el toast
+      toast.classList.remove('hidden');
+
+      // Añadir animación de rebote con escala
+      toast.classList.add('opacity-100', 'scale-110');
+      
+      // Forzar la reflow para que la animación se ejecute
+      toast.offsetHeight; // Este truco hace que el navegador "vea" el cambio de clases.
+
+      // Reemplazar la animación con la versión sin escala
+      toast.classList.remove('scale-110');
+      toast.classList.add('animate-toastEnter');
+
+      // Ocultar el toast después de 3 segundos con animación de desaparición
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'animate-toastEnter');
+        toast.classList.add('opacity-0');
+        
+        // Volver a ocultar el toast después de la animación de fade-out
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 300); // Tiempo de espera para que termine la animación de fade-out
+      }, 3000);
+
+    } catch (err) {
+      console.error('Error al copiar al portapapeles: ', err);
+    }
+  });
+</script>
