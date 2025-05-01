@@ -17,4 +17,5 @@ export default defineConfig({
     }
   },
   adapter: vercel(),
+  trailingSlash: 'never',
 });
