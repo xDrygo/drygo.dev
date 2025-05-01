@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "drygo.dev",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.5",
+    "@astrojs/vercel": "^8.1.4",
     "@fontsource-variable/work-sans": "^5.2.5",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.5",
