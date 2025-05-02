@@ -1,13 +1,13 @@
 ---
-import type { Language } from '@/types/language.type';
+import type { Language } from "@/types/language.type";
 
-import '@/styles/global.css'
-import '@fontsource-variable/work-sans' 
+import "@/styles/global.css";
+import "@fontsource-variable/work-sans";
 
 interface Props {
-	lang: Language;
-	t: any;
-	title: string;
+  lang: Language;
+  t: any;
+  title: string;
 }
 
 const { lang, t, title } = Astro.props;
@@ -15,56 +15,73 @@ const { lang, t, title } = Astro.props;
 
 <!doctype html>
 <html class="h-full" lang={lang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
-		<link rel="icon" type="image/webp" href="/favicon.webp" />
-		<meta name="description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
-		
-		<meta property="og:type" content="website"/>
-		<meta property="og:url" content="https://drygo-dev.vercel.app/"/>
-		<meta property="og:title" content="drygo.dev 💫"/>
-		<meta property="og:description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."/>
-		<meta property="og:image" content="https://raw.githubusercontent.com/xDrygo/drygo.dev/refs/heads/main/public/og.jpg"/>
-		<meta property="og:locale" content="es_MX" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <meta
+      name="description"
+      content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."
+    />
 
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="drygo.dev 💫">
-		<meta name="twitter:site" content="@eldrygo">
-		<meta name="twitter:description" content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java.">
-		<meta name="twitter:image" content="https://raw.githubusercontent.com/xDrygo/drygo.dev/refs/heads/main/public/og.jpg">
-	</head>
-  	<body class="h-full flex flex-col">
-		<div id="mail_toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#f8d3ff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out">
-			{t.portfolio.toast.mail}
-		</div>
-		<div id="discord_toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#c9cdff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out">
-			{t.portfolio.toast.discord}
-		  </div>
-		<slot />
-	</body>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://drygo-dev.vercel.app/" />
+    <meta property="og:title" content="drygo.dev 💫" />
+    <meta
+      property="og:description"
+      content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/xDrygo/drygo.dev/refs/heads/main/public/og.jpg"
+    />
+    <meta property="og:locale" content="es_MX" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="drygo.dev 💫" />
+    <meta name="twitter:site" content="@eldrygo" />
+    <meta
+      name="twitter:description"
+      content="Pagina Oficial de Drygo (@eldrygo), Desarrollador y Programador en Java."
+    />
+  </head>
+  <body class="h-full flex flex-col">
+    <div
+      id="mail_toast"
+      class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#f8d3ff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out"
+    >
+      {t.portfolio.toast.mail}
+    </div>
+    <div
+      id="discord_toast"
+      class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-[#49434a] text-[#c9cdff] px-10 py-2 rounded-full text-lg opacity-0 hidden z-50 transition-all duration-500 ease-out"
+    >
+      {t.portfolio.toast.discord}
+    </div>
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	:root {
-		color-scheme: light light;
-	}
-	html {
-		font-family: 'Work Sans Variable', sans-serif;
-		scroll-behavior: smooth;
-	}
+  :root {
+    color-scheme: light light;
+  }
+  html {
+    font-family: "Work Sans Variable", sans-serif;
+    scroll-behavior: smooth;
+  }
 
-	body {
-		background: rgb(253, 246, 255);
-		display: flex;
-		flex-direction: column;
-		height: 100vh;  /* Cambié min-height a height */
-	}
+  body {
+    background: rgb(253, 246, 255);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Cambié min-height a height */
+  }
 
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-	}
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 </style>
