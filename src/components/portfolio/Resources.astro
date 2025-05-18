@@ -1,20 +1,19 @@
 ---
-
-import CSSIcon from '@/icons/CSS.astro';
-import AstroIcon from '@/icons/AstroIcon.astro';
-import HTMLIcon from '@/icons/HTML.astro';
-import JavaIcon from '@/icons/Java.astro';
-import JavaScriptIcon from '@/icons/JavaScript.astro';
-import TypeScriptIcon from '@/icons/TypeScript.astro';
-import MavenIcon from '@/icons/Maven.astro';
-import SQLIcon from '@/icons/SQL.astro';
-import TailwindIcon from '@/icons/Tailwind.astro';
-import GitHubIcon from '@/icons/GitHub.astro';
-import WikiIcon from '@/icons/Wiki.astro';
-import ModrinthIcon from '@/icons/Modrinth.astro';
+import CSSIcon from "@/icons/CSS.astro";
+import AstroIcon from "@/icons/AstroIcon.astro";
+import HTMLIcon from "@/icons/HTML.astro";
+import JavaIcon from "@/icons/Java.astro";
+import JavaScriptIcon from "@/icons/JavaScript.astro";
+import TypeScriptIcon from "@/icons/TypeScript.astro";
+import MavenIcon from "@/icons/Maven.astro";
+import SQLIcon from "@/icons/SQL.astro";
+import TailwindIcon from "@/icons/Tailwind.astro";
+import GitHubIcon from "@/icons/GitHub.astro";
+import WikiIcon from "@/icons/Wiki.astro";
+import ModrinthIcon from "@/icons/Modrinth.astro";
 
 import type { Language } from "@/types/language.type";
-import type { Translations } from '@/types/translations.type';
+import type { Translations } from "@/types/translations.type";
 
 interface Props {
   lang: Language;
@@ -24,167 +23,184 @@ interface Props {
 const { lang, t } = Astro.props;
 
 const TAGS = {
-    CSS: {
-        name: "CSS",
-        class: "text-[#285aec]",
-        icon: CSSIcon
-    },
-    HTML: {
-        name: "HTML",
-        class: "text-[#ff5e23]",
-        icon: HTMLIcon
-    },
-    JAVA: {
-        name: "Java",
-        class: "text-[#ed9140]",
-        icon: JavaIcon
-    },
-    MAVEN: {
-        name: "Maven",
-        class: "text-[#ba2046]",
-        icon: MavenIcon
-    },
-    JS: {
-        name: "JavaScript",
-        class: "text-[#f0db4f]",
-        icon: JavaScriptIcon
-    },
-    TS: {
-        name: "TypeScript",
-        class: "text-[#3178c6]",
-        icon: TypeScriptIcon
-    },
-    SQL: {
-        name: "SQL",
-        class: "text-blue-400",
-        icon: SQLIcon
-    },
-    TAILWIND: {
-        name: "Tailwind",
-        class: "text-[#73bcf6]",
-        icon: TailwindIcon
-    },
-    ASTRO: {
-        name: "Astro",
-        class: "text-[#f24c51]",
-        icon: AstroIcon
-    }
-}
+  CSS: {
+    name: "CSS",
+    class: "text-[#285aec]",
+    icon: CSSIcon,
+  },
+  HTML: {
+    name: "HTML",
+    class: "text-[#ff5e23]",
+    icon: HTMLIcon,
+  },
+  JAVA: {
+    name: "Java",
+    class: "text-[#ed9140]",
+    icon: JavaIcon,
+  },
+  MAVEN: {
+    name: "Maven",
+    class: "text-[#ba2046]",
+    icon: MavenIcon,
+  },
+  JS: {
+    name: "JavaScript",
+    class: "text-[#f0db4f]",
+    icon: JavaScriptIcon,
+  },
+  TS: {
+    name: "TypeScript",
+    class: "text-[#3178c6]",
+    icon: TypeScriptIcon,
+  },
+  SQL: {
+    name: "SQL",
+    class: "text-blue-400",
+    icon: SQLIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind",
+    class: "text-[#73bcf6]",
+    icon: TailwindIcon,
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "text-[#f24c51]",
+    icon: AstroIcon,
+  },
+};
 
 const RESOURCES = [
-    {
-        title: t.portfolio.resources.resources.xwhitelist.title,
-        description: t.portfolio.resources.resources.xwhitelist.description,
-        github: 'https://github.com/xDrygo/xWhitelist',
-        modrinth: 'https://modrinth.com/plugin/xwhitelist',
-        wiki: 'https://drygo.gitbook.io/xwhitelist',
-        image: '../portfolio/resources/xwhitelist.jpg',
-        tags: [TAGS.JAVA, TAGS.SQL, TAGS.MAVEN]
-    },
-    {
-        title: t.portfolio.resources.resources.xteams.title,
-        description: t.portfolio.resources.resources.xteams.description,
-        modrinth: 'https://modrinth.com/plugin/xteams',
-        wiki: 'https://drygo.gitbook.io/xteams',
-        github: 'https://github.com/xDrygo/xTeams',
-        image: '../portfolio/resources/xteams.jpg',
-        tags: [TAGS.JAVA, TAGS.MAVEN]
-    },
-    {
-        title: t.portfolio.resources.resources.xutils.title,
-        description: t.portfolio.resources.resources.xutils.description,
-        github: 'https://github.com/xDrygo/xUtils',
-        image: '../portfolio/resources/xutils.jpg',
-        tags: [TAGS.JAVA, TAGS.MAVEN]
-    },
-    {
-        title: t.portfolio.resources.resources.dwhitelist.title,
-        description: t.portfolio.resources.resources.dwhitelist.description,
-        github: 'https://github.com/xDrygo/dWhitelist',
-        image: '../portfolio/resources/dwhitelist.jpg',
-        tags: [TAGS.JAVA, TAGS.MAVEN]
-    },
-    {
-        title: t.portfolio.resources.resources.lteams.title,
-        description: t.portfolio.resources.resources.lteams.description,
-        github: 'https://github.com/xDrygo/LTeams',
-        image: '../portfolio/resources/lteams.jpg',
-        tags: [TAGS.JAVA, TAGS.MAVEN]
-    }
-]
+  {
+    title: t.portfolio.resources.resources.xwhitelist.title,
+    description: t.portfolio.resources.resources.xwhitelist.description,
+    github: "https://github.com/xDrygo/xWhitelist",
+    modrinth: "https://modrinth.com/plugin/xwhitelist",
+    wiki: "https://drygo.gitbook.io/xwhitelist",
+    image: "../portfolio/resources/xwhitelist.jpg",
+    tags: [TAGS.JAVA, TAGS.SQL, TAGS.MAVEN],
+  },
+  {
+    title: t.portfolio.resources.resources.xteams.title,
+    description: t.portfolio.resources.resources.xteams.description,
+    modrinth: "https://modrinth.com/plugin/xteams",
+    wiki: "https://drygo.gitbook.io/xteams",
+    github: "https://github.com/xDrygo/xTeams",
+    image: "../portfolio/resources/xteams.jpg",
+    tags: [TAGS.JAVA, TAGS.MAVEN],
+  },
+  {
+    title: t.portfolio.resources.resources.xutils.title,
+    description: t.portfolio.resources.resources.xutils.description,
+    github: "https://github.com/xDrygo/xUtils",
+    image: "../portfolio/resources/xutils.jpg",
+    tags: [TAGS.JAVA, TAGS.MAVEN],
+  },
+  {
+    title: t.portfolio.resources.resources.dwhitelist.title,
+    description: t.portfolio.resources.resources.dwhitelist.description,
+    github: "https://github.com/xDrygo/dWhitelist",
+    image: "../portfolio/resources/dwhitelist.jpg",
+    tags: [TAGS.JAVA, TAGS.MAVEN],
+  },
+  {
+    title: t.portfolio.resources.resources.lteams.title,
+    description: t.portfolio.resources.resources.lteams.description,
+    github: "https://github.com/xDrygo/LTeams",
+    image: "../portfolio/resources/lteams.jpg",
+    tags: [TAGS.JAVA, TAGS.MAVEN],
+  },
+  {
+    title: t.portfolio.resources.resources.xbossbar.title,
+    description: t.portfolio.resources.resources.xbossbar.description,
+    github: "https://github.com/xDrygo/xBossBar",
+    image: "../portfolio/resources/xbossbar.jpg",
+    tags: [TAGS.JAVA, TAGS.MAVEN],
+  },
+];
 ---
 
-<section class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 pb-20">
-    {RESOURCES.map(({ image, title, description, tags, github, wiki, modrinth }) => (
-      <article class="col-span-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl overflow-hidden hover:scale-[1.01] transition flex flex-col">
-        
-        {/* Contenedor flex para imagen y contenido */}
-        <div class="bg-white flex flex-col md:flex-row flex-1">
-          {/* Imagen */}
-          <div class="flex-shrink-0">
-            <img class="h-60 md:h-full md:w-48 object-cover" src={image} alt={`Screenshot of ${title}`} />
-          </div>
-  
-          {/* Contenido */}
-          <div class="flex flex-col justify-between p-4 flex-1">
-            <div>
-              <h3 class="text-2xl font-bold text-[#9f56af] mb-2">{title}</h3>
-              <p class="text-base text-pretty mb-4">{description}</p>
+<section
+  class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 pb-20"
+>
+  {
+    RESOURCES.map(
+      ({ image, title, description, tags, github, wiki, modrinth }) => (
+        <article class="col-span-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl overflow-hidden hover:scale-[1.01] transition flex flex-col">
+          {/* Contenedor flex para imagen y contenido */}
+          <div class="bg-white flex flex-col md:flex-row flex-1">
+            {/* Imagen */}
+            <div class="flex-shrink-0">
+              <img
+                class="h-60 md:h-full md:w-48 object-cover"
+                src={image}
+                alt={`Screenshot of ${title}`}
+              />
             </div>
-  
-            {/* Tags + botones */}
-            <div class="flex items-center justify-between flex-wrap gap-4">
-              <ul class="flex flex-wrap gap-2">
-                {tags.map(tag => (
-                  <li>
-                    <a class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md ${tag.class} hover:scale-105 transition`}>
-                      <tag.icon class="size-4" />
-                      {tag.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-  
-              {(wiki || github || modrinth) && (
-                <div class="flex gap-2">
-                {modrinth && (
-                  <a 
-                    href={modrinth} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-[#6be14e] font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
-                  >
-                    <ModrinthIcon class="size-4 lg:size-5" />
-                  </a>
-                )}
 
-                {wiki && (
-                  <a 
-                    href={wiki} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-3 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
-                  >
-                    <WikiIcon class="size-4 lg:size-5" />
-                  </a>
-                )}
+            {/* Contenido */}
+            <div class="flex flex-col justify-between p-4 flex-1">
+              <div>
+                <h3 class="text-2xl font-bold text-[#9f56af] mb-2">{title}</h3>
+                <p class="text-base text-pretty mb-4">{description}</p>
+              </div>
 
-                {github && (
-                  <a 
-                    href={github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
-                  >
-                    <GitHubIcon class="size-4 lg:size-5" />
-                  </a>
+              {/* Tags + botones */}
+              <div class="flex items-center justify-between flex-wrap gap-4">
+                <ul class="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <li>
+                      <a
+                        class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md ${tag.class} hover:scale-105 transition`}
+                      >
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
+                {(wiki || github || modrinth) && (
+                  <div class="flex gap-2">
+                    {modrinth && (
+                      <a
+                        href={modrinth}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-[#6be14e] font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
+                      >
+                        <ModrinthIcon class="size-4 lg:size-5" />
+                      </a>
+                    )}
+
+                    {wiki && (
+                      <a
+                        href={wiki}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-3 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
+                      >
+                        <WikiIcon class="size-4 lg:size-5" />
+                      </a>
+                    )}
+
+                    {github && (
+                      <a
+                        href={github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
+                      >
+                        <GitHubIcon class="size-4 lg:size-5" />
+                      </a>
+                    )}
+                  </div>
                 )}
-                </div>
-              )}
+              </div>
             </div>
           </div>
-        </div>
-  
-      </article>
-    ))}
-  </section>
+        </article>
+      ),
+    )
+  }
+</section>

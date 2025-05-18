@@ -1,116 +1,119 @@
 export interface Translations {
-    languageLabel: string;
-    languageOptions: {
-      en: string;
-      es: string;
+  languageLabel: string;
+  languageOptions: {
+    en: string;
+    es: string;
+  };
+  index: {
+    title: string;
+    email: string;
+    portfolio: string;
+  };
+  portfolio: {
+    title: string;
+    header: {
+      nav: {
+        about_me: string;
+        minecraft_proyects: string;
+        resources: string;
+        other_proyects: string;
+        contact: string;
+      };
     };
-    index: {
+    hero: {
       title: string;
-      email: string;
-      portfolio: string;
+      badge: string;
+      summary: string;
     };
-    portfolio: {
+    about: {
       title: string;
-      header: {
-        nav: {
-            about_me: string;
-            minecraft_proyects: string;
-            resources: string;
-            other_proyects: string;
-            contact: string;
-        };
-      };
-      hero: {
+      content: {
         title: string;
-        badge: string;
-        summary: string;
+        summary_1: string;
+        summary_2: string;
       };
-      about: {
+      technologies: {
         title: string;
-        content: {
+        studying: string;
+      };
+    };
+    minecraft_proyects: {
+      title: string;
+      proyects: {
+        party_fest: {
           title: string;
-          summary_1: string;
-          summary_2: string;
+          description: string;
         };
-        technologies: {
+        the_8_show: {
           title: string;
-          studying: string;
+          description: string;
+        };
+        pumpkin_challenge: {
+          title: string;
+          description: string;
+        };
+        speedrun_boss: {
+          title: string;
+          description: string;
         };
       };
-      minecraft_proyects: {
-        title: string;
-        proyects: {
-          party_fest: {
-            title: string;
-            description: string;
-          };
-          the_8_show: {
-            title: string;
-            description: string;
-          };
-          pumpkin_challenge: {
-            title: string;
-            description: string;
-          };
-          speedrun_boss: {
-            title: string;
-            description: string;
-          };
-        };
-      };
+    };
+    resources: {
+      title: string;
       resources: {
-        title: string;
-        resources: {
-          xwhitelist: {
-            title: string;
-            description: string;
-          };
-          xteams: {
-            title: string;
-            description: string;
-          };
-          xutils: {
-            title: string;
-            description: string;
-          };
-          dwhitelist: {
-            title: string;
-            description: string;
-          };
-          lteams: {
-            title: string;
-            description: string;
-          };
+        xwhitelist: {
+          title: string;
+          description: string;
         };
-      };
-      other_proyects: {
-        title: string;
-        proyects: {
-          drygo_dev: {
-            title: string;
-            description: string;
-          };
-          portfolio: {
-            title: string;
-            description: string;
-          };
+        xteams: {
+          title: string;
+          description: string;
         };
-      };
-      contact: {
-        title: string;
-        button_mail: string;
-      };
-      footer: {
-        copyright: string;
-        buttons: {
-          about: string;
-          top: string;
+        xutils: {
+          title: string;
+          description: string;
         };
-      };
-      toast: {
-        mail: string;
-        discord: string;
+        dwhitelist: {
+          title: string;
+          description: string;
+        };
+        lteams: {
+          title: string;
+          description: string;
+        };
+        xbossbar: {
+          title: string;
+          description: string;
+        };
       };
     };
-  }
-  
+    other_proyects: {
+      title: string;
+      proyects: {
+        drygo_dev: {
+          title: string;
+          description: string;
+        };
+        portfolio: {
+          title: string;
+          description: string;
+        };
+      };
+    };
+    contact: {
+      title: string;
+      button_mail: string;
+    };
+    footer: {
+      copyright: string;
+      buttons: {
+        about: string;
+        top: string;
+      };
+    };
+    toast: {
+      mail: string;
+      discord: string;
+    };
+  };
+}

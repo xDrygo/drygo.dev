@@ -83,20 +83,24 @@ export default {
                 lteams: {
                     title: "Plugin: LTeams",
                     description: "LTeams es un add-on para xTeams y este agrega una conexion con Luckperms para enlazar teams de xTeams con grupos de Luckperms y agregar a los miembros de un team a su grupo de Luckperms correspondiente."
+                },
+                xbossbar: {
+                    title: "Plugin: xBossBar",
+                    description: "xBossBar es un plugin de gestión de BossBars que permite crear barras globales o por jugador con soporte para placeholders y actualizaciones en tiempo real de título, progreso, color y estilo. Además de contar con una potente API."
                 }
             }
         },
         other_proyects: {
             title: "Otros Proyectos",
             proyects: {
-              drygo_dev: {
-                title: "Web: drygo.dev",
-                description: "Una pequeña pagina que sirve de hub con mis redes sociales mas usadas además de un boton para acceder a mi portafolio.",
-              },
-              portfolio: {
-                title: "Web: Mi Portafolio",
-                description: "Mi propio portafolio, creado para poder exponer mis proyectos con mayor facilidad y inspirado en porfolio.dev de midudev.",
-              },
+                drygo_dev: {
+                    title: "Web: drygo.dev",
+                    description: "Una pequeña pagina que sirve de hub con mis redes sociales mas usadas además de un boton para acceder a mi portafolio.",
+                },
+                portfolio: {
+                    title: "Web: Mi Portafolio",
+                    description: "Mi propio portafolio, creado para poder exponer mis proyectos con mayor facilidad y inspirado en porfolio.dev de midudev.",
+                },
             }
         },
         contact: {
