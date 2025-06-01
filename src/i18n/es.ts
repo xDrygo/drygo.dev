@@ -47,17 +47,18 @@ export default {
                 the_8_show: {
                     title: "Evento: The 8 Show",
                     description: "Este evento fue inspirado en la serie de Netflix \"The 8 Show\", tenia sistema de tiempo, maquina expendedora de monedas que restaba tiempo dependiendo la moneda, tiendas para comprar items, minijuegos como LA GALLINA CIEGA, REY MANDA o EL SHOW DE TALENTOS."
-
                 },
                 pumpkin_challenge: {
                     title: "Evento: Pumpkin Challenge",
                     description: "Este evento consistió en un Build Battle donde los jugadores construyeron una calabaza de Halloween con su historia para exponerla a los jueces. Este evento tuvo building, configuración, sistema hecho en Conditional Events, etc."
-
                 },
                 speedrun_boss: {
                     title: "Evento: Speedrun Boss",
                     description: "En este evento, los jugadores tuvieron que matar a todos los jefes del juego, desde el Warden, hasta la Dragona. Este evento tuvo, building, configuración, sistema de cinematicas, sistema de tiempos, registro de jefes, sistema de equipos, etc."
-
+                },
+                rushbomb: {
+                    title: "Evento: RushBomb",
+                    description: "En este evento, los jugadores compitieron en variantes del clásico TNT Tag, como GoldenBomb (el sin cola pierde) y KothTNT (gana quien más tiempo tenga la bomba). Desarrollado junto a Turtle Club."
                 },
             }
         },

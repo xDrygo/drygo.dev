@@ -56,6 +56,10 @@ export interface Translations {
           title: string;
           description: string;
         };
+        rushbomb: {
+          title: string;
+          description: string;
+        };
       };
     };
     resources: {

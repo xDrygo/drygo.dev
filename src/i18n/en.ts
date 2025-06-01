@@ -57,6 +57,10 @@ export default {
                 speedrun_boss: {
                     title: "Event: Speedrun Boss",
                     description: "In this event, players had to defeat all the bosses in the game, from the Warden to the Ender Dragon. The event included building, configuration, cinematic systems, a timing system, boss tracking, team systems, and more."
+                },
+                rushbomb: {
+                    title: "Event: RushBomb",
+                    description: "In this event, players competed in twists on the classic TNT Tag, like GoldenBomb (the player without a tail loses) and KothTNT (the one holding the bomb the longest wins). Developed in collaboration with Turtle Club."
                 }
             }
         },
