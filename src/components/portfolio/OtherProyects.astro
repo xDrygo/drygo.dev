@@ -1,18 +1,17 @@
 ---
-
-import CSSIcon from '@/icons/CSS.astro';
-import AstroIcon from '@/icons/AstroIcon.astro';
-import HTMLIcon from '@/icons/HTML.astro';
-import JavaIcon from '@/icons/Java.astro';
-import JavaScriptIcon from '@/icons/JavaScript.astro';
-import TypeScriptIcon from '@/icons/TypeScript.astro';
-import SQLIcon from '@/icons/SQL.astro';
-import TailwindIcon from '@/icons/Tailwind.astro';
-import GitHubIcon from '@/icons/GitHub.astro';
-import LinkIcon from '@/icons/Link.astro';
+import CSSIcon from "@/icons/CSS.astro";
+import AstroIcon from "@/icons/AstroIcon.astro";
+import HTMLIcon from "@/icons/HTML.astro";
+import JavaIcon from "@/icons/Java.astro";
+import JavaScriptIcon from "@/icons/JavaScript.astro";
+import TypeScriptIcon from "@/icons/TypeScript.astro";
+import SQLIcon from "@/icons/SQL.astro";
+import TailwindIcon from "@/icons/Tailwind.astro";
+import GitHubIcon from "@/icons/GitHub.astro";
+import LinkIcon from "@/icons/Link.astro";
 
 import type { Language } from "@/types/language.type";
-import type { Translations } from '@/types/translations.type';
+import type { Translations } from "@/types/translations.type";
 
 interface Props {
   lang: Language;
@@ -22,128 +21,137 @@ interface Props {
 const { lang, t } = Astro.props;
 
 const TAGS = {
-    CSS: {
-        name: "CSS",
-        class: "text-[#285aec]",
-        icon: CSSIcon
-    },
-    HTML: {
-        name: "HTML",
-        class: "text-[#ff5e23]",
-        icon: HTMLIcon
-    },
-    JAVA: {
-        name: "Java",
-        class: "text-[#ed9140]",
-        icon: JavaIcon
-    },
-    JS: {
-        name: "JavaScript",
-        class: "text-[#f0db4f]",
-        icon: JavaScriptIcon
-    },
-    TS: {
-        name: "TypeScript",
-        class: "text-[#3178c6]",
-        icon: TypeScriptIcon
-    },
-    SQL: {
-        name: "SQL",
-        class: "text-blue-400",
-        icon: SQLIcon
-    },
-    TAILWIND: {
-        name: "Tailwind",
-        class: "text-[#73bcf6]",
-        icon: TailwindIcon
-    },
-    ASTRO: {
-        name: "Astro",
-        class: "text-[#f24c51]",
-        icon: AstroIcon
-    }
-}
+  CSS: {
+    name: "CSS",
+    class: "text-[#285aec]",
+    icon: CSSIcon,
+  },
+  HTML: {
+    name: "HTML",
+    class: "text-[#ff5e23]",
+    icon: HTMLIcon,
+  },
+  JAVA: {
+    name: "Java",
+    class: "text-[#ed9140]",
+    icon: JavaIcon,
+  },
+  JS: {
+    name: "JavaScript",
+    class: "text-[#f0db4f]",
+    icon: JavaScriptIcon,
+  },
+  TS: {
+    name: "TypeScript",
+    class: "text-[#3178c6]",
+    icon: TypeScriptIcon,
+  },
+  SQL: {
+    name: "SQL",
+    class: "text-blue-400",
+    icon: SQLIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind",
+    class: "text-[#73bcf6]",
+    icon: TailwindIcon,
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "text-[#f24c51]",
+    icon: AstroIcon,
+  },
+};
 
 const PROYECTS = [
-    {
-        title: t.portfolio.other_proyects.proyects.drygo_dev.title,
-        description: t.portfolio.other_proyects.proyects.drygo_dev.description,
-        link: 'https://drygo-dev.vercel.app',
-        github: 'https://github.com/xDrygo/drygo.dev',
-        image: "../portfolio/proyects/drygo.dev.webp",
-        tags: [TAGS.HTML, TAGS.CSS, TAGS.TS, TAGS.ASTRO, TAGS.TAILWIND]
-    },
-    
-    {
-        title: t.portfolio.other_proyects.proyects.portfolio.title,
-        description: t.portfolio.other_proyects.proyects.portfolio.description,
-        link: `https://drygo-dev.vercel.app/portfolio`,
-        github: 'https://github.com/xDrygo/drygo.dev',
-        image: "../portfolio/proyects/portfolio.webp",
-        tags: [TAGS.HTML, TAGS.CSS, TAGS.TS, TAGS.ASTRO, TAGS.TAILWIND]
-    }
-]
+  {
+    title: t.portfolio.other_proyects.proyects.drygo_dev.title,
+    description: t.portfolio.other_proyects.proyects.drygo_dev.description,
+    link: "https://drygo.dev",
+    github: "https://github.com/xDrygo/drygo.dev",
+    image: "../portfolio/proyects/drygo.dev.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TS, TAGS.ASTRO, TAGS.TAILWIND],
+  },
+
+  {
+    title: t.portfolio.other_proyects.proyects.portfolio.title,
+    description: t.portfolio.other_proyects.proyects.portfolio.description,
+    link: `https://drygo.dev/portfolio`,
+    github: "https://github.com/xDrygo/drygo.dev",
+    image: "../portfolio/proyects/portfolio.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TS, TAGS.ASTRO, TAGS.TAILWIND],
+  },
+];
 ---
-<section class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 pb-20">
-    {PROYECTS.map(({ image, title, description, tags, github, link }) => (
+
+<section
+  class="w-4/5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 pb-20"
+>
+  {
+    PROYECTS.map(({ image, title, description, tags, github, link }) => (
       <article class="col-span-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl overflow-hidden hover:scale-[1.01] transition flex flex-col">
-        
         {/* Contenedor flex para imagen y contenido */}
         <div class="bg-white flex flex-col md:flex-row flex-1">
           {/* Imagen */}
           <div class="flex-shrink-0">
-            <img class="h-60 md:h-full md:w-48 object-cover" src={image} alt={`Screenshot of ${title}`} />
+            <img
+              class="h-60 md:h-full md:w-48 object-cover"
+              src={image}
+              alt={`Screenshot of ${title}`}
+            />
           </div>
-  
+
           {/* Contenido */}
           <div class="flex flex-col justify-between p-4 flex-1">
             <div>
               <h3 class="text-2xl font-bold text-[#c96ddd] mb-2">{title}</h3>
               <p class="text-base text-pretty mb-4">{description}</p>
             </div>
-  
+
             {/* Tags + botones */}
             <div class="flex items-center justify-between flex-wrap gap-4">
               <ul class="flex flex-wrap gap-2">
-                {tags.map(tag => (
+                {tags.map((tag) => (
                   <li>
-                    <a class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md ${tag.class} hover:scale-105 transition`}>
+                    <a
+                      class={`flex items-center gap-1 rounded-full text-sm font-semibold bg-[#fef9ff] border border-[#eadfed] py-1 px-3 shadow-md ${tag.class} hover:scale-105 transition`}
+                    >
                       <tag.icon class="size-4" />
                       {tag.name}
                     </a>
                   </li>
-                ))}  
+                ))}
               </ul>
-  
+
               {(link || github) && (
                 <div class="flex gap-2">
-                {link && (
-                  <a 
-                    href={link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-3 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
-                  >
-                    <LinkIcon class="size-4 lg:size-5" />
-                  </a>
-                )}
+                  {link && (
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-3 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
+                    >
+                      <LinkIcon class="size-4 lg:size-5" />
+                    </a>
+                  )}
 
-                {github && (
-                  <a 
-                    href={github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
-                  >
-                    <GitHubIcon class="size-4 lg:size-5" />
-                  </a>
-                )}
+                  {github && (
+                    <a
+                      href={github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-2 bg-[#3e3e3e] hover:bg-[#4d4d4d] text-white font-semibold text-sm py-1 px-2 rounded-full shadow-md hover:scale-105 active:scale-95 transition"
+                    >
+                      <GitHubIcon class="size-4 lg:size-5" />
+                    </a>
+                  )}
                 </div>
               )}
             </div>
           </div>
         </div>
-  
       </article>
-    ))}
+    ))
+  }
 </section>

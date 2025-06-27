@@ -23,7 +23,7 @@ export default {
         hero: {
             title: "Hola, soy Drygo 💫",
             badge: "Ocupado",
-            summary: `Desarrollador de Java entre otros lenguajes. De Tijuana, México 🇲🇽. Especializado en la <span class="text-[#b263c2]">creacion de plugins y mods de Minecraft</span>, además de la <span class="text-[#ef6161]">creacion y configuracion de servidores</span> en el mismo.`
+            summary: `Desarrollador de Java entre otros lenguajes. De México 🇲🇽. Especializado en la <span class="text-[#b263c2]">creacion de plugins y mods de Minecraft</span>, además de la <span class="text-[#ef6161]">creacion y configuracion de servidores</span> en el mismo.`
         },
         about: {
             title: "Sobre Mí",

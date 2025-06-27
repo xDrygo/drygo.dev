@@ -23,7 +23,7 @@ export default {
         hero: {
             title: "Hi, I'm Drygo 💫",
             badge: "Busy",
-            summary: `Java developer among other languages. From Tijuana, Mexico 🇲🇽. 
+            summary: `Java developer among other languages. From Mexico 🇲🇽. 
             Specialized in the <span class="text-[#b263c2]">creation of Minecraft plugins and mods</span>, 
             as well as the <span class="text-[#ef6161]">creation and configuration of Minecraft servers</span>.`
         },
