@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "@fontsource/space-mono";
+@import "@fontsource-variable/sixtyfour";
+
+@theme {
+  --font-special: "Sixtyfour", sans-serif;
+}
+
+@font-face {
+  font-family: "Sixtyfour";
+  src: url("/fonts/sixtyfour.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sixtyfour", monospace;
+}
+h1,
+h2 {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5),
+    0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.2);
+}
+html,
+body {
+  height: 100%;
+  background: #101010;
+  color: white;
+  font-family: "Space Mono", monospace;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%); /* pausa al inicio */
+  }
+  33% {
+    transform: translateX(0%); /* todavía quieto */
+  }
+  66% {
+    transform: translateX(-60%); /* se desplaza al final */
+  }
+  100% {
+    transform: translateX(0%); /* regreso inmediato */
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 20s linear infinite; /* más lento */
+}

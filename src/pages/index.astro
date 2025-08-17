@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import SpotifyCardPlayer from "../components/Spotify/SpotifyCardPlayer.jsx";
+import { getSpotifyItem } from "../lib/spotify";
+
+const leftSpotify = [
+  await getSpotifyItem("3f3puCJ6jL8h4wnRU1duas", "album"),
+  await getSpotifyItem("4R87kb3x0AY6NrFdY89w3X", "album"),
+  await getSpotifyItem("7HrVog5aqBaFvOIDE233pa", "album"),
+  await getSpotifyItem("40Wax4czqcWZsN66Z8tNX8", "album"),
+];
+
+const rightSpotify = [
+  await getSpotifyItem("3Rd8NZ6itwtWeC2Ng6yBFT", "album"),
+  await getSpotifyItem("5nQqnE7TEn8odupGk10aMG", "album"),
+  await getSpotifyItem("0GkkcPcjxMEZPUYUkVzBAj", "album"),
+  await getSpotifyItem("5suFT1ZnEST0Oq8Lbl5729", "album"),
+];
+import DrygoTypewriter from "../components/Drygo/DrygoTypewriter.astro";
+import AboutMe from "../components/AboutMe.astro";
+---
+
+<Layout>
+  <div class="flex gap-4 min-h-screen">
+    <div
+      class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]"
+    >
+      {leftSpotify.map((item) => <SpotifyCardPlayer client:load item={item} />)}
+    </div>
+
+    <div class="flex-1 mx-auto mt-10 mb-10 text-center">
+      <DrygoTypewriter />
+      <AboutMe />
+    </div>
+
+    <div
+      class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]"
+    >
+      {
+        rightSpotify.map((item) => (
+          <SpotifyCardPlayer client:load item={item} />
+        ))
+      }
+    </div>
+  </div>
+</Layout>

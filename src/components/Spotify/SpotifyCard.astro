@@ -1,0 +1,16 @@
+---
+import SpotifyCardPlayer from "../components/SpotifyCardPlayer.jsx";
+import { getSpotifyItem } from "../lib/spotify";
+
+interface Props {
+  id: string;
+  type: "track" | "album"; // ahora especificamos el tipo
+}
+
+const { id, type }: Props = Astro.props;
+
+// Obtener el item (track o album)
+const item = await getSpotifyItem(id, type);
+---
+
+<SpotifyCardPlayer client:load item={item} />
