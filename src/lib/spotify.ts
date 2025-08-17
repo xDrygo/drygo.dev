@@ -34,29 +34,29 @@ export interface SpotifyAlbumItem {
   external_urls: { spotify: string };
 }
 
-// Obtener token
-async function getAccessToken(): Promise<string> {
-  const basic = btoa(`${clientId}:${clientSecret}`);
+import fs from "fs";
+
+export async function getUserAccessToken(): Promise<string> {
+  const refresh_token = fs.readFileSync("./refresh_token.txt", "utf-8");
+
   const resp = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
-    headers: {
-      Authorization: `Basic ${basic}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: "grant_type=client_credentials",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token,
+      client_id: clientId,
+      client_secret: clientSecret,
+    }),
   });
 
   const data = await resp.json();
-  if (!resp.ok) {
-    throw new Error(`No se pudo obtener el token: ${data.error_description || data.error}`);
-  }
-
+  if (!resp.ok) throw new Error(`Error refrescando token: ${data.error}`);
   return data.access_token;
 }
 
-// Función universal
 export async function getSpotifyItem(id: string, type: "track" | "album"): Promise<SpotifyTrack | SpotifyAlbumItem> {
-  const token = await getAccessToken();
+  const token = await getUserAccessToken();
   let url = "";
 
   if (type === "track") url = `https://api.spotify.com/v1/tracks/${id}`;
