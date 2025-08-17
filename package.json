@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.2.6",
     "@fontsource-variable/sixtyfour": "^5.2.6",
     "@fontsource/space-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.12",
