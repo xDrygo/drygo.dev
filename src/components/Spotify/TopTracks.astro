@@ -1,0 +1,17 @@
+---
+// src/components/Spotify/TopTracks.astro
+import SpotifyCardPlayer from "./SpotifyCardPlayer.jsx";
+
+const res = await fetch("/api/top-tracks");
+const tracks = await res.json();
+const left = tracks.slice(0, 5);
+const right = tracks.slice(5, 10);
+---
+
+<div class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]">
+  {left.map((track: any) => <SpotifyCardPlayer client:load item={track} />)}
+</div>
+
+<div class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]">
+  {right.map((track: any) => <SpotifyCardPlayer client:load item={track} />)}
+</div>

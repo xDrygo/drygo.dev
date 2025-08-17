@@ -1,50 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-import SpotifyCardPlayer from "../components/Spotify/SpotifyCardPlayer.jsx";
-import { getSpotifyItem, getUserAccessToken } from "../lib/spotify";
-
-const token = await getUserAccessToken();
-const topTracksResponse = await fetch(
-  "https://api.spotify.com/v1/me/top/tracks?limit=10",
-  {
-    headers: { Authorization: `Bearer ${token}` },
-  }
-);
-
-const topTracksData = await topTracksResponse.json();
-
-const leftSpotify = topTracksData.items.slice(0, 5);
-const rightSpotify = topTracksData.items.slice(5, 10);
+import TopTracks from "../components/Spotify/TopTracks.astro";
 import DrygoTypewriter from "../components/Drygo/DrygoTypewriter.astro";
 import AboutMe from "../components/AboutMe.astro";
 ---
 
 <Layout>
   <div class="flex gap-4 min-h-screen">
-    <div
-      class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]"
-    >
-      {
-        leftSpotify.map((item: any) => (
-          <SpotifyCardPlayer client:load item={item} />
-        ))
-      }
-    </div>
-
+    <TopTracks />
     <div class="flex-1 mx-auto mt-10 mb-10 text-center">
       <DrygoTypewriter />
       <AboutMe />
-    </div>
-
-    <div
-      class="hidden lg:flex flex-col gap-10 p-4 mt-4 overflow-y-auto w-[280px]"
-    >
-      {
-        rightSpotify.map((item: any) => (
-          <SpotifyCardPlayer client:load item={item} />
-        ))
-      }
     </div>
   </div>
 </Layout>
