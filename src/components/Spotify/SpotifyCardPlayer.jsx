@@ -60,55 +60,59 @@ export default function SpotifyCard({ item }) {
   }, [name, artists]);
 
   return (
-    <div className="w-[200px] rounded-3xl shadow-2xl overflow-hidden text-white mx-auto relative flex flex-col opacity-20 hover:opacity-100 transition-all hover:scale-101">
-      <div
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: `url(${coverUrl})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(20px)",
-          opacity: 0.5,
-          zIndex: 0,
-          transition: "opacity 0.3s",
-        }}
-      />
+    <div className="w-[100%] sm:w-[100%] rounded-3xl shadow-2xl overflow-hidden text-white mx-auto relative flex flex-row transition-all hover:scale-101 border-1 border-white/10">
+  {/* Fondo difuminado */}
+  <div
+    className="absolute inset-0 w-full h-full"
+    style={{
+      backgroundImage: `url(${coverUrl})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      filter: "blur(20px)",
+      opacity: 0.5,
+      zIndex: 0,
+      transition: "opacity 0.3s",
+    }}
+  />
 
-      <div className="relative z-10 bg-black/50 flex flex-col duration-300 opacity-100">
-        <div className="w-full">
-          <img src={coverUrl} alt={name} className="w-full h-auto object-cover" />
-        </div>
-
-        <div className="p-4 flex flex-col gap-2">
-          <div className="w-40 overflow-hidden">
-            <h2
-              ref={nameRef}
-              className="relative text-md font-bold whitespace-nowrap"
-            >
-              <span className={nameOverflow ? "animate-marquee inline-block" : ""}>
-                {name}
-              </span>
-            </h2>
-            <p
-              ref={artistRef}
-              className="relative text-white/50 text-sm whitespace-nowrap"
-            >
-              <span className={artistOverflow ? "animate-marquee inline-block" : ""}>
-                {artists}
-              </span>
-            </p>
-          </div>
-
-          <a
-            href={spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full mt-2 px-4 py-2 bg-[#fff]/60 hover:bg-[#fdbaff]/100 hover:scale-102 transition-all text-black font-semibold rounded-full text-center"
-          >
-            Escuchar
-          </a>
-        </div>
-      </div>
+  <div className="relative z-10 bg-black/50 flex flex-row w-full duration-300 opacity-100">
+    {/* Imagen */}
+    <div className="w-1/3">
+      <img src={coverUrl} alt={name} className="w-full h-full object-cover" />
     </div>
+
+    {/* Contenido */}
+    <div className="p-4 flex flex-col gap-2 w-2/3">
+      <div className="overflow-hidden">
+        <h2
+          ref={nameRef}
+          className="relative text-md font-bold whitespace-nowrap"
+        >
+          <span className={nameOverflow ? "animate-marquee inline-block" : ""}>
+            {name}
+          </span>
+        </h2>
+        <p
+          ref={artistRef}
+          className="relative text-white/50 text-sm whitespace-nowrap"
+        >
+          <span className={artistOverflow ? "animate-marquee inline-block" : ""}>
+            {artists}
+          </span>
+        </p>
+      </div>
+
+      <a
+        href={spotifyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full mt-2 px-4 py-2 bg-[#fff]/60 hover:bg-[#fdbaff]/100 hover:scale-102 transition-all text-black font-semibold rounded-full text-center border-1 border-white/50"
+        aria-label={`Listen to ${name} by ${artists} on Spotify`}
+      >
+        Listen
+      </a>
+    </div>
+  </div>
+</div>
   );
 }

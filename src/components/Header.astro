@@ -1,0 +1,105 @@
+---
+import DrygoTypewriter from "./Drygo/DrygoTypewriter.astro";
+import Discord from "./icons/Discord.astro";
+import GitHub from "./icons/GitHub.astro";
+import Twitter from "./icons/Twitter.astro";
+import Modrinth from "./icons/Modrinth.astro";
+import Twitch from "./icons/Twitch.astro";
+import Link from "./icons/Link.astro";
+
+const links = [
+  { href: "https://www.drygo.dev", icon: Link, class: "size-5" },
+  {
+    href: "https://link.drygo.dev/twitter",
+    icon: Twitter,
+    class: "w-4.5 h-auto",
+  },
+  { href: "https://link.drygo.dev/github", icon: GitHub, class: "size-5" },
+  { href: "https://link.drygo.dev/discord", icon: Discord, class: "size-5" },
+  { href: "https://link.drygo.dev/modrinth", icon: Modrinth, class: "size-5" },
+  { href: "https://link.drygo.dev/twitch", icon: Twitch, class: "size-5" },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed z-50 w-full bg-black/25 backdrop-blur-sm transition-all duration-300 px-6 py-5 sm:py-8 flex items-center justify-between"
+>
+  <div
+    class="flex md:hidden max-[450px]:hidden justify-between items-center w-full max-w-xl mx-auto px-4"
+  >
+    <div class="flex gap-2">
+      {
+        links.slice(0, 3).map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Visit ${link.href.replace(/^https?:\/\//, "")}`}
+            class="flex items-center px-2 py-1 rounded-xl hover:bg-[#fdbaff]/10 text-[#fdbaff] justify-center opacity-50 hover:opacity-100 hover:scale-110 transition-all"
+          >
+            <link.icon class={link.class} />
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="flex gap-2">
+      {
+        links.slice(3).map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Visit ${link.href.replace(/^https?:\/\//, "")}`}
+            class="flex items-center px-2 py-1 rounded-xl hover:bg-[#fdbaff]/10 text-[#fdbaff] justify-center opacity-50 hover:opacity-100 hover:scale-110 transition-all"
+          >
+            <link.icon class={link.class} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <DrygoTypewriter />
+  </div>
+
+  <div
+    class="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 gap-4 max-w-[200px] lg:max-w-full truncate transition-all"
+  >
+    <span
+      class="bg-gradient-to-r from-[#ff2020] to-[#ff2080] bg-clip-text text-transparent font-bold cursor-default"
+    >
+      Portfolio under construction.
+    </span>
+  </div>
+
+  <nav class="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 gap-2">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener"
+          aria-label={`Visit ${link.href.replace(/^https?:\/\//, "")}`}
+          class="flex items-center px-2 py-1 rounded-xl hover:bg-[#fdbaff]/10 text-[#fdbaff] justify-center opacity-50 hover:opacity-100 hover:scale-110 transition-all"
+        >
+          <link.icon class="size-5" />
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById("main-header");
+  window.addEventListener("scroll", () => {
+    if (!header) return;
+    if (window.scrollY > 10) {
+      header.classList.add("bg-black/10", "backdrop-blur-md");
+    } else {
+      header.classList.remove("bg-black/10", "backdrop-blur-md");
+    }
+  });
+</script>

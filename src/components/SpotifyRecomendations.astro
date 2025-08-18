@@ -1,0 +1,41 @@
+---
+import SpotifyCardPlayer from "./Spotify/SpotifyCardPlayer.jsx";
+import { getSpotifyItem } from "../lib/spotify";
+
+const spotifyCards = [
+  await getSpotifyItem("3f3puCJ6jL8h4wnRU1duas", "album"),
+  await getSpotifyItem("4R87kb3x0AY6NrFdY89w3X", "album"),
+  await getSpotifyItem("5suFT1ZnEST0Oq8Lbl5729", "album"),
+  await getSpotifyItem("3Rd8NZ6itwtWeC2Ng6yBFT", "album"),
+  await getSpotifyItem("7M3tTNeYiYamVgZur0HIap", "album"),
+  await getSpotifyItem("6Tq424szeW90RmrrbmSP7k", "album"),
+];
+---
+
+<div class="container mx-auto px-4 py-8 items-center justify-center">
+  <h2 class="text-2xl font-bold mb-8 text-center text-pretty">
+    Drygo's Favorites
+  </h2>
+
+  <section
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-6 mx-auto justify-items-center md:justify-items-stretch"
+    aria-label="Drygo's favorite Spotify tracks and albums"
+  >
+    {
+      spotifyCards.map((item) => (
+        <SpotifyCardPlayer
+          client:load
+          item={item}
+          aria-label={`Spotify item: ${item.name} by ${item.artists?.map((a) => a.name).join(", ")}`}
+        />
+      ))
+    }
+  </section>
+
+  <span
+    class="flex mx-auto justify-center mt-10 text-white/25 cursor-default"
+    aria-label="Additional Spotify favorites not listed"
+  >
+    And more, but the list would get too long haha
+  </span>
+</div>

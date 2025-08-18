@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+import PageFooter from "../components/Footer.astro";
 ---
 
 <!doctype html>
@@ -7,10 +9,45 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Drygo 💫 Minecraft plugin, Java, Discord.js, Web developer</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>
+      Drygo's Portfolio 💫 Minecraft plugin, Java, Discord.js & Web developer
+    </title>
+    <meta
+      name="description"
+      content="Drygo's Portfolio website - I am a Plugin Developer and Server/Event Creator in Minecraft, as well as a Web Pages and Discord Bots creator."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://portfolio.drygo.dev" />
+    <meta
+      property="og:title"
+      content="Drygo's Portfolio 💫 Minecraft plugin, Java, Discord.js & Web developer"
+    />
+    <meta
+      property="og:description"
+      content="Drygo's Portfolio website - I am a Plugin Developer and Server/Event Creator in Minecraft, as well as a Web Pages and Discord Bots creator."
+    />
+    <meta property="og:image" content="https://portfolio.drygo.dev/og.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Drygo's Portfolio 💫 Minecraft plugin, Java, Discord.js & Web developer"
+    />
+    <meta name="twitter:site" content="@eldrygo" />
+    <meta
+      name="twitter:description"
+      content="Drygo's Portfolio website - I am a Plugin Developer and Server/Event Creator in Minecraft, as well as a Web Pages and Discord Bots creator."
+    />
+    <meta name="twitter:image" content="https://portfolio.drygo.dev/og.jpg" />
   </head>
-  <body>
-    <slot />
+  <body class="flex flex-col min-h-screen m-0 p-0">
+    <Header />
+    <main class="flex-grow w-full">
+      <div class="w-full">
+        <slot />
+      </div>
+    </main>
+    <PageFooter />
   </body>
 </html>

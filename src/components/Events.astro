@@ -1,0 +1,66 @@
+---
+const events = [
+  {
+    title: "Party Fest",
+    description:
+      "A mini-game event where players must survive through various party challenges such as BOMBAS, COLORES, EL MERCADO, and more. Created by Koryfi Studio.",
+    image: "images/events/party_fest.webp",
+    link: "https://x.com/eldrygo/status/1827213701642121703",
+  },
+  {
+    title: "Speedrun Boss",
+    description:
+      "A competitive speedrun event where 16 pairs of players race to defeat every major Minecraft boss to claim the title of Speedrun Boss. Made in collaboration with Jose90.",
+    image: "images/events/speedrun_boss.webp",
+    link: "https://github.com/xDrygo/SpeedrunBoss",
+  },
+  {
+    title: "RushBomb",
+    description:
+      "A fast-paced mini-game event with 165 players competing in explosive challenges inspired by the classic TNT Tag game. Developed with Turtle Club.",
+    image: "images/events/rushbomb.webp",
+    link: "https://turtleclub.drygo.dev/proyectos/rushbomb",
+  },
+  {
+    title: "Valde Roulette",
+    description:
+      "A dynamic reality show–style mini-game event where 20 teams of 5 players face off in survival challenges filled with strategy, chaos, and fun. Produced with Turtle Club & IV Studios.",
+    image: "images/events/valde_roulette.webp",
+    link: "https://turtleclub.drygo.dev/proyectos/valde-roulette",
+  },
+];
+---
+
+<div class="container mx-auto py-8">
+  <h2 class="text-2xl font-bold mb-8 text-center">Featured Events</h2>
+  <div
+    class="grid gap-6 xs:grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2"
+  >
+    {
+      events.map((event) => (
+        <a
+          href={event.link}
+          target="_blank"
+          aria-label={`Open event: ${event.title}`}
+          class="relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group border-1 border-white/10"
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style={{ backgroundImage: `url(${event.image})` }}
+          />
+
+          <div class="absolute inset-0 bg-black/20 backdrop-blur-md flex flex-col justify-center items-center text-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <h3 class="text-lg sm:text-2xl font-bold text-white mb-2">
+              {event.title}
+            </h3>
+            <p class="text-sm sm:text-base text-white/80">
+              {event.description}
+            </p>
+          </div>
+
+          <div class="h-40 sm:h-80" />
+        </a>
+      ))
+    }
+  </div>
+</div>

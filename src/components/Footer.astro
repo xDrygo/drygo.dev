@@ -1,0 +1,59 @@
+---
+import Discord from "./icons/Discord.astro";
+import GitHub from "./icons/GitHub.astro";
+import Twitter from "./icons/Twitter.astro";
+import Modrinth from "./icons/Modrinth.astro";
+import Twitch from "./icons/Twitch.astro";
+import Link from "./icons/Link.astro";
+import Up from "./icons/Up.astro";
+
+const links = [
+  { href: "https://www.drygo.dev", icon: Link, class: "size-5" },
+  {
+    href: "https://link.drygo.dev/twitter",
+    icon: Twitter,
+    class: "w-4.5 h-auto",
+  },
+  { href: "https://link.drygo.dev/github", icon: GitHub, class: "size-5" },
+  { href: "https://link.drygo.dev/discord", icon: Discord, class: "size-5" },
+  { href: "https://link.drygo.dev/modrinth", icon: Modrinth, class: "size-5" },
+  { href: "https://link.drygo.dev/twitch", icon: Twitch, class: "size-5" },
+];
+---
+
+<footer class="w-full bg-black/25 backdrop-blur-md text-[#fdbaff] py-8 mt-12">
+  <div
+    class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+  >
+    <div class="text-center sm:text-left">
+      <h3 class="text-lg font-bold">drygo.dev</h3>
+      <p class="text-sm text-[#fdbaff]/60">
+        © {new Date().getFullYear()} drygo.dev - All rights reserved.
+      </p>
+    </div>
+
+    <div class="flex gap-1">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Visit ${link.href.replace(/^https?:\/\//, "")}`}
+            class="flex items-center px-2 py-1 rounded-xl hover:bg-[#fdbaff]/10 text-[#fdbaff] justify-center opacity-50 hover:opacity-100 hover:scale-110 transition-all"
+          >
+            <link.icon class={link.class} />
+          </a>
+        ))
+      }
+
+      <a
+        href="#"
+        aria-label="Scroll to top"
+        class="flex items-center px-2 py-1 rounded-xl bg-[#fdbaff]/10 hover:bg-[#fdbaff]/20 justify-center opacity-50 hover:opacity-100 hover:scale-110 transition-all"
+      >
+        <Up class="size-5" />
+      </a>
+    </div>
+  </div>
+</footer>
