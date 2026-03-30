@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^10.0.3",
     "@fontsource/dotgothic16": "^5.2.8",
     "@labymod/skinview3d": "^2.0.2",
     "@tailwindcss/vite": "^4.1.17",
