@@ -1,0 +1,20 @@
+---
+import Hero from "@/components/comissions/Hero.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import Header from "@/components/comissions/Header.astro";
+import Services from "@/components/comissions/Services.astro";
+import Contact from "@/components/comissions/Contact.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <Hero />
+  <SectionTitle title="interesado en mi trabajo?!?!? ヾ(•ω•`)o" id="resume" />
+  <Header />
+  <SectionTitle title="mis serrrviciiiosss ( •̀ ω •́ )✧" id="#services" />
+  <Services />
+  <SectionTitle title="contactameee ~(=^‥^)ノ" id=" contact" />
+  <div class="hidden md:block -mt-25"></div>
+  <Contact />
+  <div class="block md:hidden mt-20"></div>
+</Layout>

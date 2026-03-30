@@ -1,0 +1,217 @@
+---
+const projects = [
+  {
+    name: "speedrun_boss.exe",
+    image: "/images/projects/speedrun_boss.webp",
+    tags: ["Game", "Speedrun", "Challenge"],
+    description:
+      "Un evento competitivo de speedrun donde 16 duos compiten para derrotar a todos los bosses de Minecraft y conseguir el título de Speedrun Boss.",
+    url: "https://x.com/jose90YT/status/1909431398710104545",
+  },
+  {
+    name: "rushbomb.exe",
+    image: "/images/projects/rushbomb.webp",
+    tags: ["Action", "Funky", "Explosive"],
+    description:
+      "Un evento de 165 jugadores compitiendo en juegos explosivos de TNT Tag. Desarrollado con Turtle Club.",
+    url: "https://x.com/kansuoficial/status/1926130477871624522",
+  },
+  {
+    name: "uhc_baguette.exe",
+    image: "/images/projects/uhc_baguette.webp",
+    tags: ["Minecraft", "UHC", "Server"],
+    description:
+      "Servidor de Minecraft UHC con temática francesa y mecánicas personalizadas. Desarrollado con Turtle Club.",
+    url: "https://x.com/turtleclubmc/status/1990156843549925699",
+  },
+  {
+    name: "sector_x.exe",
+    image: "/images/projects/sector_x.webp",
+    tags: ["Hardcore", "Fallout", "Lore"],
+    description:
+      "Una serie de Minecraft hardcore donde los jugadores deberán enfrentarse a las consecuencias de un mundo sumido en la radiación.",
+    url: "https://x.com/Sector__X/status/2010116104492859685",
+  },
+  {
+    name: "speedrun_boom.exe",
+    image: "/images/projects/speedrun_boom.webp",
+    tags: ["Speedrun", "Advancements", "Challenge"],
+    description:
+      "35 dúos compiten contra el tiempo desbloqueando logros para mantener una bomba bajo control. Si se detienen, explota.",
+    url: "https://x.com/jose90YT/status/2036521683205439784",
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto">
+  <!-- Mobile: scroll horizontal de cards -->
+  <div class="flex md:hidden gap-3 overflow-x-auto pb-2 scrollbar-none px-1">
+    {
+      projects.map((project, i) => (
+        <div class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col shrink-0 w-64">
+          <div class="h-8 bg-[#573070] flex items-center justify-between px-2 shrink-0">
+            <span class="text-white text-xs font-bold truncate pr-2">
+              {project.name}
+            </span>
+            <button
+              aria-hidden="true"
+              tabindex="-1"
+              class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="square"
+                class="w-3 h-3 text-black"
+              >
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              </svg>
+            </button>
+          </div>
+          <img
+            src={project.image}
+            alt={project.name}
+            class="w-full h-32 object-cover border-b-2 border-black"
+          />
+          <div class="p-2 flex flex-col flex-1 gap-2">
+            <div class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-2 flex-1 font-family-comic">
+              <p class="text-xs text-black leading-relaxed line-clamp-3">
+                {project.description}
+              </p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0 min-w-0">
+              <div class="relative flex-1 min-w-0">
+                <div
+                  class="tag-fade-left pointer-events-none absolute left-0 top-0 h-full w-6 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to right, #d1d5db, transparent)"
+                />
+                <div
+                  class="tag-fade-right pointer-events-none absolute right-0 top-0 h-full w-6 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to left, #d1d5db, transparent)"
+                />
+                <div class="tag-scroll flex gap-1 overflow-x-auto scrollbar-none">
+                  {project.tags.map((tag) => (
+                    <span class="px-1.5 py-0.5 bg-gray-200 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-[9px] font-bold text-black whitespace-nowrap shrink-0 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3 py-1 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black font-bold text-xs hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white whitespace-nowrap shrink-0"
+              >
+                Mas info. +
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Desktop: grid -->
+  <div
+    class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+  >
+    {
+      projects.map((project, i) => (
+        <div class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col transition-transform hover:-translate-y-1 hover:scale-101 w-full">
+          <div class="h-8 bg-[#573070] flex items-center justify-between px-2 shrink-0">
+            <span class="text-white text-sm font-bold truncate pr-2">
+              {project.name}
+            </span>
+            <button
+              aria-hidden="true"
+              tabindex="-1"
+              class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="square"
+                class="w-3 h-3 text-black"
+              >
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              </svg>
+            </button>
+          </div>
+          <img
+            src={project.image}
+            alt={project.name}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-3 flex flex-col flex-1 gap-4">
+            <div class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-2 flex-1 font-family-comic">
+              <p class="text-sm text-black leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 min-w-0">
+              <div class="relative flex-1 min-w-0">
+                <div
+                  class="tag-fade-left pointer-events-none absolute left-0 top-0 h-full w-8 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to right, #d1d5db, transparent)"
+                />
+                <div
+                  class="tag-fade-right pointer-events-none absolute right-0 top-0 h-full w-8 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to left, #d1d5db, transparent)"
+                />
+                <div class="tag-scroll flex gap-1.5 overflow-x-auto scrollbar-none">
+                  {project.tags.map((tag) => (
+                    <span class="px-2 py-0.5 bg-gray-200 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-xs font-bold text-black whitespace-nowrap shrink-0 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-6 py-2 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black font-bold text-sm hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white transition-transform hover:scale-105 whitespace-nowrap shrink-0"
+              >
+                Mas info. +
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  function updateFades(el: HTMLElement) {
+    const wrapper = el.closest(".relative");
+    if (!wrapper) return;
+    const fadeLeft = wrapper.querySelector<HTMLElement>(".tag-fade-left");
+    const fadeRight = wrapper.querySelector<HTMLElement>(".tag-fade-right");
+    if (fadeLeft) fadeLeft.style.opacity = el.scrollLeft > 0 ? "1" : "0";
+    if (fadeRight)
+      fadeRight.style.opacity =
+        el.scrollLeft + el.clientWidth < el.scrollWidth - 1 ? "1" : "0";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll<HTMLElement>(".tag-scroll").forEach((el) => {
+      updateFades(el);
+      el.addEventListener("scroll", () => updateFades(el));
+      new ResizeObserver(() => updateFades(el)).observe(el);
+    });
+  });
+</script>

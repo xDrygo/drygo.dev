@@ -1,0 +1,97 @@
+---
+import Java from '@/icons/Java.astro';
+import HTMLIcon from '@/icons/HTMLIcon.astro';
+import CSSIcon from '@/icons/CSSIcon.astro';
+import JavaScript from '@/icons/JavaScript.astro';
+import Database from '@/icons/Database.astro';
+import AstroIcon from '@/icons/AstroIcon.astro';
+import ReactIcon from '@/icons/ReactIcon.astro';
+import TailwindCSS from '@/icons/TailwindCSS.astro';
+import DiscordJS from '@/icons/DiscordJS.astro';
+import PaperMC from '@/icons/PaperMC.astro';
+import Maven from '@/icons/Maven.astro';
+import Git from '@/icons/Git.astro';
+import VSCode from '@/icons/VSCode.astro';
+import IntelliJIdea from '@/icons/IntelliJIdea.astro';
+import GitHub from '@/icons/GitHub.astro';
+import MySQL from '@/icons/MySQL.astro';
+import Vercel from '@/icons/Vercel.astro';
+import Render from '@/icons/Render.astro';
+
+const techStacks = [
+  {
+    title: "languages.txt",
+    items: [
+      { name: "Java", icon: Java, iconSize: "size-4" },
+      { name: "HTML", icon: HTMLIcon, iconSize: "size-4" },
+      { name: "CSS", icon: CSSIcon, iconSize: "size-4" },
+      { name: "JavaScript", icon: JavaScript, iconSize: "size-4" },
+      { name: "SQL", icon: Database, iconSize: "size-4" },
+    ]
+  },
+  {
+    title: "frameworks_and_libraries.txt",
+    items: [
+      { name: "Astro", icon: AstroIcon, iconSize: "size-3.5" },
+      { name: "React", icon: ReactIcon, iconSize: "size-4" },
+      { name: "Tailwind CSS", icon: TailwindCSS, iconSize: "size-4" },
+      { name: "Discord.js", icon: DiscordJS, iconSize: "size-4" },
+      { name: "Paper", icon: PaperMC, iconSize: "size-4" },
+    ]
+  },
+  {
+    title: "tools.txt",
+    items: [
+      { name: "Apache Maven", icon: Maven, iconSize: "size-4" },
+      { name: "Git", icon: Git, iconSize: "size-4" },
+      { name: "Visual Studio Code", icon: VSCode, iconSize: "size-4" },
+      { name: "IntelliJ Idea", icon: IntelliJIdea, iconSize: "size-4" },
+    ]
+  },
+  {
+    title: "clouds_and_providers.txt",
+    items: [
+      { name: "GitHub", icon: GitHub, iconSize: "size-4" },
+      { name: "MySQL", icon: MySQL, iconSize: "size-4" },
+      { name: "Vercel", icon: Vercel, iconSize: "size-3.5" },
+      { name: "Render", icon: Render, iconSize: "size-3.5" },
+      { name: "Pterodactyl", image: "/images/techstack/pterodactyl.webp", iconSize: "w-4 h-4" },
+    ]
+  }
+];
+---
+
+<section class="w-full max-w-7xl mx-auto">
+  <div class="grid grid-cols-2 gap-3 md:gap-6">
+    {techStacks.map((section) => (
+      <div class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 hover:scale-101">
+
+        <!-- Barra de título -->
+        <div class="h-7 md:h-8 bg-[#573070] flex items-center justify-between px-2">
+          <span class="text-white text-[10px] md:text-sm font-bold truncate pr-1">{section.title}</span>
+          <button aria-hidden="true" tabindex="-1"
+            class="w-5 h-5 md:w-6 md:h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center shrink-0 hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="w-2 h-2 md:w-3 md:h-3 text-black">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-2 md:p-4">
+          <div class="flex flex-wrap gap-1 md:gap-2 cursor-default">
+            {section.items.map((item) => (
+              <span class="flex items-center px-1.5 md:px-2 py-0.5 md:py-1 bg-gray-300 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-[10px] md:text-xs font-bold text-black hover:bg-gray-400 active:border-t-gray-600 active:border-l-gray-600 active:border-b-white active:border-r-white transition-transform hover:scale-101">
+                {item.icon && <item.icon class={`${item.iconSize ?? 'size-4'} mr-1 md:mr-2`} />}
+                {item.image && <img src={item.image} alt={`${item.name} logo`} class={`${item.iconSize ?? 'w-4 h-4'} mr-1 md:mr-2`} />}
+                {item.name}
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>

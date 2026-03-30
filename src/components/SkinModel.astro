@@ -1,0 +1,345 @@
+---
+// components/SkinModel.astro
+interface Props {
+  uuid: string;
+  skin?: string;
+  skinUrl?: string;
+  rotate?: boolean;
+  rotateOnHover?: boolean;
+}
+
+const {
+  uuid,
+  skin = null,
+  skinUrl = null,
+  rotate = true,
+  rotateOnHover = false,
+} = Astro.props;
+const canvasId = `skin-viewer-${Math.random().toString(36).substring(7)}`;
+---
+
+<div
+  class="w-full h-full overflow-hidden relative"
+  data-skin-container
+  data-uuid={uuid}
+  data-skin={skin}
+  data-skin-url={skinUrl}
+  data-rotate={rotate}
+  data-rotate-on-hover={rotateOnHover}
+>
+  <canvas
+    id={canvasId}
+    data-uuid={uuid}
+    data-skin={skin}
+    data-skin-url={skinUrl}
+    data-rotate={rotate}
+    data-rotate-on-hover={rotateOnHover}
+    data-initialized="false"
+    class="w-full h-full block opacity-0 translate-y-8 transition-all duration-700 ease-out"
+  ></canvas>
+</div>
+
+<script>
+  import { SkinViewer, createOrbitControls } from "@labymod/skinview3d";
+
+  const LOAD_DEBOUNCE = 200;
+  const DESTROY_DELAY = 800;
+  const MIN_COOLDOWN = 300;
+
+  const activeViewers = new Map<string, SkinViewer>();
+  const loadingOperations = new Map<string, boolean>();
+  const pendingLoadTimeouts = new Map<string, number>();
+  const pendingDestroyTimeouts = new Map<string, number>();
+  const lastOperationTime = new Map<string, number>();
+
+  async function getMinecraftTextures(username: string) {
+    try {
+      const skinUrl = `https://mineskin.eu/skin/${username}`;
+      const response = await fetch(skinUrl);
+
+      if (!response.ok) {
+        console.error("Skin not found");
+        return null;
+      }
+
+      return {
+        skin: skinUrl,
+        cape: null,
+      };
+    } catch (error) {
+      console.error("Error loading textures:", error);
+      return null;
+    }
+  }
+
+  async function initializeViewer(container: HTMLElement) {
+    const canvas = container.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const uuid = container.getAttribute("data-uuid");
+    let skinUrl = container.getAttribute("data-skin-url");
+    const rotate = container.getAttribute("data-rotate") === "true";
+    const rotateOnHover =
+      container.getAttribute("data-rotate-on-hover") === "true";
+    const canvasId = canvas.id;
+
+    const lastOp = lastOperationTime.get(canvasId) || 0;
+    if (Date.now() - lastOp < MIN_COOLDOWN) return;
+
+    if (pendingDestroyTimeouts.has(canvasId)) {
+      clearTimeout(pendingDestroyTimeouts.get(canvasId));
+      pendingDestroyTimeouts.delete(canvasId);
+    }
+
+    if (loadingOperations.get(canvasId)) return;
+
+    if (
+      canvas.getAttribute("data-initialized") === "true" &&
+      activeViewers.has(canvasId)
+    ) {
+      requestAnimationFrame(() => {
+        canvas.classList.remove("opacity-0", "translate-y-8");
+        canvas.classList.add("opacity-100", "translate-y-0");
+      });
+      return;
+    }
+
+    if (!uuid) return;
+
+    loadingOperations.set(canvasId, true);
+    lastOperationTime.set(canvasId, Date.now());
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    if (width === 0 || height === 0) {
+      loadingOperations.delete(canvasId);
+      return;
+    }
+
+    let finalSkinUrl: string | null = null;
+
+    if (skinUrl && skinUrl !== "null" && skinUrl !== "") {
+      if (skinUrl.startsWith("//")) skinUrl = "https:" + skinUrl;
+      else if (
+        !skinUrl.startsWith("http://") &&
+        !skinUrl.startsWith("https://")
+      )
+        skinUrl = "https://" + skinUrl;
+
+      finalSkinUrl = `https://corsproxy.io/?${encodeURIComponent(skinUrl)}`;
+    } else {
+      const textures = await getMinecraftTextures(uuid);
+
+      if (!document.body.contains(canvas) || !loadingOperations.get(canvasId)) {
+        loadingOperations.delete(canvasId);
+        return;
+      }
+
+      if (!textures?.skin) {
+        loadingOperations.delete(canvasId);
+        return;
+      }
+
+      finalSkinUrl = textures.skin;
+    }
+
+    if (!finalSkinUrl) {
+      loadingOperations.delete(canvasId);
+      return;
+    }
+
+    try {
+      const viewer = new SkinViewer({
+        canvas: canvas,
+        width: width,
+        height: height,
+        skin: finalSkinUrl,
+      });
+
+      if (!document.body.contains(canvas) || !loadingOperations.get(canvasId)) {
+        viewer.dispose();
+        loadingOperations.delete(canvasId);
+        return;
+      }
+
+      activeViewers.set(canvasId, viewer);
+
+      // Cámara centrada y alejada para ver el modelo completo
+      viewer.camera.rotation.x = -0.1;
+      viewer.camera.rotation.y = 0;
+      viewer.camera.position.set(0, 5, 70);
+
+      const control = createOrbitControls(viewer);
+      control.enableRotate = true;
+      control.enableZoom = false;
+      control.enablePan = false;
+
+      if (rotate) {
+        let rotationY = 0;
+        let isRotating = !rotateOnHover;
+
+        viewer.playerObject.skin.rightArm.rotation.x = 0.2;
+        viewer.playerObject.skin.leftArm.rotation.x = -0.2;
+        viewer.playerObject.skin.rightLeg.rotation.x = -0.1;
+        viewer.playerObject.skin.leftLeg.rotation.x = 0.1;
+
+        function animateRotation() {
+          if (activeViewers.has(canvasId)) {
+            if (isRotating) {
+              rotationY += 0.01;
+              viewer.playerObject.rotation.y = rotationY;
+            }
+            requestAnimationFrame(animateRotation);
+          }
+        }
+
+        viewer.playerObject.rotation.y = rotationY;
+        animateRotation();
+
+        if (rotateOnHover) {
+          const groupElement = canvas.closest(".group");
+          if (groupElement) {
+            groupElement.addEventListener("mouseenter", () => {
+              isRotating = true;
+            });
+            groupElement.addEventListener("mouseleave", () => {
+              isRotating = false;
+            });
+          }
+        }
+      }
+
+      canvas.setAttribute("data-initialized", "true");
+
+      setTimeout(() => {
+        if (document.body.contains(canvas) && activeViewers.has(canvasId)) {
+          requestAnimationFrame(() => {
+            canvas.classList.remove("opacity-0", "translate-y-8");
+            canvas.classList.add("opacity-100", "translate-y-0");
+          });
+        }
+      }, 50);
+    } catch (error) {
+      console.error("Error creating SkinViewer:", error);
+    } finally {
+      loadingOperations.delete(canvasId);
+    }
+  }
+
+  function destroyViewer(container: HTMLElement) {
+    const canvas = container.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const canvasId = canvas.id;
+
+    if (pendingLoadTimeouts.has(canvasId)) {
+      clearTimeout(pendingLoadTimeouts.get(canvasId));
+      pendingLoadTimeouts.delete(canvasId);
+    }
+
+    if (loadingOperations.get(canvasId)) {
+      loadingOperations.delete(canvasId);
+    }
+
+    const viewer = activeViewers.get(canvasId);
+
+    if (viewer) {
+      lastOperationTime.set(canvasId, Date.now());
+
+      try {
+        viewer.dispose();
+        activeViewers.delete(canvasId);
+
+        const newCanvas = document.createElement("canvas");
+        newCanvas.id = canvasId;
+        newCanvas.setAttribute(
+          "data-uuid",
+          container.getAttribute("data-uuid") || "",
+        );
+        newCanvas.setAttribute(
+          "data-skin-url",
+          container.getAttribute("data-skin-url") || "",
+        );
+        newCanvas.setAttribute(
+          "data-rotate",
+          container.getAttribute("data-rotate") || "true",
+        );
+        newCanvas.setAttribute(
+          "data-rotate-on-hover",
+          container.getAttribute("data-rotate-on-hover") || "false",
+        );
+        newCanvas.setAttribute("data-initialized", "false");
+        newCanvas.className =
+          "w-full h-full block opacity-0 translate-y-8 transition-all duration-700 ease-out";
+
+        canvas.parentNode?.replaceChild(newCanvas, canvas);
+      } catch (error) {
+        console.error("Error destroying viewer:", error);
+      }
+    }
+  }
+
+  function scheduleLoad(container: HTMLElement) {
+    const canvas = container.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const canvasId = canvas.id;
+
+    if (pendingLoadTimeouts.has(canvasId))
+      clearTimeout(pendingLoadTimeouts.get(canvasId));
+    if (pendingDestroyTimeouts.has(canvasId)) {
+      clearTimeout(pendingDestroyTimeouts.get(canvasId));
+      pendingDestroyTimeouts.delete(canvasId);
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      pendingLoadTimeouts.delete(canvasId);
+      initializeViewer(container);
+    }, LOAD_DEBOUNCE);
+
+    pendingLoadTimeouts.set(canvasId, timeoutId);
+  }
+
+  function scheduleDestroy(container: HTMLElement) {
+    const canvas = container.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const canvasId = canvas.id;
+
+    if (pendingLoadTimeouts.has(canvasId)) {
+      clearTimeout(pendingLoadTimeouts.get(canvasId));
+      pendingLoadTimeouts.delete(canvasId);
+    }
+
+    if (pendingDestroyTimeouts.has(canvasId))
+      clearTimeout(pendingDestroyTimeouts.get(canvasId));
+
+    const timeoutId = window.setTimeout(() => {
+      pendingDestroyTimeouts.delete(canvasId);
+      destroyViewer(container);
+    }, DESTROY_DELAY);
+
+    pendingDestroyTimeouts.set(canvasId, timeoutId);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const containers = document.querySelectorAll("[data-skin-container]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const container = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            scheduleLoad(container);
+          } else {
+            scheduleDestroy(container);
+          }
+        });
+      },
+      { rootMargin: "50px", threshold: 0.1 },
+    );
+
+    containers.forEach((container) => observer.observe(container));
+  });
+</script>

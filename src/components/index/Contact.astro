@@ -1,0 +1,260 @@
+---
+import GitHub from "@/icons/GitHub.astro";
+import Twitter from "@/icons/Twitter.astro";
+import Modrinth from "@/icons/Modrinth.astro";
+import Kick from "@/icons/Kick.astro";
+import Twitch from "@/icons/Twitch.astro";
+import Discord from "@/icons/Discord.astro";
+
+const contacts = [
+  {
+    icon: Twitter,
+    label: "twitter!",
+    href: "https://link.drygo.dev/twitter",
+    rotate: "-rotate-1",
+  },
+  {
+    icon: Modrinth,
+    label: "modrinththth",
+    href: "https://link.drygo.dev/modrinth",
+    rotate: "rotate-[2deg]",
+  },
+  {
+    icon: GitHub,
+    label: "githubhubhub",
+    href: "https://link.drygo.dev/github",
+    rotate: "rotate-1",
+  },
+  {
+    icon: Twitch,
+    label: "twitchhhh¡¿¿",
+    href: "https://link.drygo.dev/twitch",
+    rotate: "rotate-[-3deg]",
+  },
+  {
+    icon: Kick,
+    label: "kickekekek",
+    href: "https://link.drygo.dev/kick",
+    rotate: "-rotate-1",
+  },
+  {
+    icon: Discord,
+    label: "discordo",
+    href: "https://link.drygo.dev/discord",
+    rotate: "rotate-2",
+  },
+];
+
+const desktopLinks = [
+  {
+    icon: Twitter,
+    label: "twitter!",
+    href: "https://link.drygo.dev/twitter",
+    rotate: "-rotate-3",
+    pos: "absolute top-15 left-[20%]",
+    winClass: "contact-win-left",
+  },
+  {
+    icon: Modrinth,
+    label: "modrinththth",
+    href: "https://link.drygo.dev/modrinth",
+    rotate: "rotate-[4deg]",
+    pos: "absolute top-15 right-[20%]",
+    winClass: "contact-win-right",
+  },
+  {
+    icon: Kick,
+    label: "kickekekek",
+    href: "https://link.drygo.dev/kick",
+    rotate: "-rotate-2",
+    pos: "absolute top-1/2 -translate-y-1/2 left-[15%]",
+    winClass: "contact-win-left",
+  },
+  {
+    icon: Discord,
+    label: "discordo",
+    href: "https://link.drygo.dev/discord",
+    rotate: "rotate-3",
+    pos: "absolute top-1/2 -translate-y-1/2 right-[15%]",
+    winClass: "contact-win-right",
+  },
+  {
+    icon: GitHub,
+    label: "githubhubhub",
+    href: "https://link.drygo.dev/github",
+    rotate: "rotate-2",
+    pos: "absolute bottom-15 left-[20%]",
+    winClass: "contact-win-left",
+  },
+  {
+    icon: Twitch,
+    label: "twitchhhh¡¿¿",
+    href: "https://link.drygo.dev/twitch",
+    rotate: "rotate-[-5deg]",
+    pos: "absolute bottom-15 right-[20%]",
+    winClass: "contact-win-right",
+  },
+];
+---
+
+<!-- Mobile -->
+<section class="lg:hidden max-w-[1000px] mx-auto">
+  <div
+    class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:scale-101 transition-all"
+  >
+    <div class="h-8 bg-[#573070] flex items-center justify-between px-2">
+      <span class="text-white text-sm font-bold">contact.exe</span>
+      <button
+        aria-hidden="true"
+        tabindex="-1"
+        class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="square"
+          class="w-3 h-3 text-black"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex font-family-comic">
+      <!-- Imagen lateral -->
+      <div class="border-r-2 border-gray-400 shrink-0">
+        <div
+          class="border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white bg-[#241a2e] m-2"
+        >
+          <img
+            src="/images/contact.webp"
+            alt="contacto drygo"
+            class="w-20 object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Grid de botones -->
+      <div class="p-2 flex-1">
+        <div class="grid grid-cols-2 gap-1.5 h-full">
+          {
+            contacts.map((c) => (
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noopener"
+                class={`flex items-center justify-center gap-2 px-2 py-1.5 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black font-bold text-xs hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white transition-transform hover:scale-105 ${c.rotate}`}
+              >
+                <c.icon class="size-3.5 shrink-0" />
+                <span class="truncate">{c.label}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Desktop -->
+<section class="hidden lg:block relative w-full font-family-comic py-16">
+  <!-- Card centrada -->
+  <div
+    class="w-fit mx-auto border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:scale-101 transition-all"
+  >
+    <div
+      class="h-8 bg-[#573070] flex items-center justify-between px-2 min-w-52"
+    >
+      <span class="text-white text-sm font-bold">contact.exe</span>
+      <button
+        aria-hidden="true"
+        tabindex="-1"
+        class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="square"
+          class="w-3 h-3 text-black"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="p-4 flex justify-center">
+      <div
+        class="border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white bg-[#241a2e] px-6 py-4"
+      >
+        <img
+          src="/images/contact.webp"
+          alt="contacto drygo"
+          class="w-36 object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones como mini ventanas -->
+  {
+    desktopLinks.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener"
+        class={`${link.pos} ${link.rotate} ${link.winClass} border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 `}
+      >
+        <div class="h-6 bg-[#573070] flex items-center justify-between px-1.5 gap-3">
+          <span class="text-white text-[10px] font-bold truncate">
+            {link.label}
+          </span>
+          <div class="w-4 h-4 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="square"
+              class="w-2 h-2 text-black"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </div>
+        </div>
+        <div class="px-3 py-2 flex items-center gap-2">
+          <link.icon class="size-4 shrink-0 text-black" />
+          <span class="text-black font-bold text-sm">{link.label}</span>
+        </div>
+      </a>
+    ))
+  }
+</section>
+
+<style>
+  .contact-win-left {
+    margin-left: 5px;
+  }
+
+  .contact-win-left:hover {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    margin-left: 0px;
+  }
+
+  .contact-win-right {
+    margin-right: 5px;
+  }
+
+  .contact-win-right:hover {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    margin-right: 0px;
+  }
+</style>

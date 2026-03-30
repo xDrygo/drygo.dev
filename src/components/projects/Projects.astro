@@ -1,0 +1,240 @@
+---
+import GitHub from "@/icons/GitHub.astro";
+
+const projects = [
+  {
+    name: "party_fest.exe",
+    image: "/images/projects/party_fest.webp",
+    tags: ["2024", "Minijuegos", "BOMBAS!!!"],
+    description: "Un evento de minijuegos donde el objetivo de los participantes es sobrevivir a juegos como BOMBAS, COLORES, EL MERCADO y más. Creado por Koryfi Studio.",
+    url: "https://x.com/33drygo/status/1827213701642121703"
+  },
+  {
+    name: "the_8_show.exe",
+    image: "/images/projects/the_8_show.webp",
+    tags: ["2024", "Tiempo", "Supervivencia"],
+    description: "Evento inspirado en The 8 Show, donde 60 jugadores deben sobrevivir manteniendo el contador mediante minijuegos y administrando el tiempo como moneda para conseguir recursos.",
+    url: "https://x.com/jose90YT/status/1831438050389582243"
+  },
+  {
+    name: "pumpkin_challenge.exe",
+    image: "/images/projects/pumpkin_challenge.webp",
+    tags: ["2024", "Build Battle", "Halloween"],
+    description: "Evento tipo Build Battle, donde los jugadores debían construir una calabaza de Halloween junto a su historia para presentarla ante los jueces, incluyendo sistemas de parcelas, entrega de construcciones, etc.",
+    url: "https://x.com/The_CrisNow/status/1851304454412173710"
+  },
+  {
+    name: "xwhitelist.exe",
+    image: "https://wiki.drygo.dev/docs/xwhitelist/og.jpg",
+    tags: ["Whitelist", "API", "Utilidad"],
+    description: "xWhitelist es un sistema potente y flexible diseñado para mejorar tu servidor con funciones avanzadas de gestión de listas blancas.",
+    url: "https://modrinth.com/plugin/xwhitelist",
+    github: "https://github.com/33drygo/xWhitelist",
+  },
+  {
+    name: "xteams.exe",
+    image: "https://wiki.drygo.dev/docs/xteams/og.jpg",
+    tags: ["Equipos", "Jugadores", "API", "Utilidad"],
+    description: "xTeams es un sistema potente y flexible diseñado para mejorar tu servidor con funciones avanzadas de gestión de equipos.",
+    url: "https://modrinth.com/plugin/xteams",
+    github: "https://github.com/33drygo/xTeams",
+  },
+  {
+    name: "speedrun_boss.exe",
+    image: "/images/projects/speedrun_boss.webp",
+    tags: ["2025", "Bosses", "Speedrun", "Duos"],
+    description: "Un evento competitivo de speedrun donde 16 duos compiten para derrotar a todos los bosses de Minecraft y conseguir el título de Speedrun Boss.",
+    url: "https://x.com/jose90YT/status/1909431398710104545",
+    github: "https://github.com/33drygo/SpeedrunBoss",
+  },
+  {
+    name: "xbossbar.exe",
+    image: "https://wiki.drygo.dev/docs/xbossbar/og.jpg",
+    tags: ["Boss Bar", "API", "Utilidad", "Información"],
+    description: "xBossBar es un sistema robusto y flexible diseñado para mejorar tu servidor con BossBars totalmente personalizables.",
+    url: "https://modrinth.com/plugin/xbossbar",
+    github: "https://github.com/33drygo/xBossBar",
+  },
+  {
+    name: "drama_orange_2.exe",
+    image: "/images/projects/drama_orange_2.webp",
+    tags: ["2025", "Isla del Drama", "Minijuegos", "Tropical"],
+    description: "Drama Orange 2 fue un evento inspirado en la serie de televisión Isla del Drama, donde los jugadores tendrian que sobrevivir a distintos minijuegos y de los que perdian habria una votación para revivir a uno.",
+    url: "https://x.com/kansuoficial/status/1901125292749418922",
+    github: "https://github.com/33drygo/DOVote",
+  },
+  {
+    name: "rushbomb.exe",
+    image: "/images/projects/rushbomb.webp",
+    tags: ["2025", "Bomba", "Supervivencia", "Ritmo"],
+    description: "Un evento de 165 jugadores compitiendo en juegos explosivos de TNT Tag. Desarrollado con Turtle Club.",
+    url: "https://x.com/kansuoficial/status/1926130477871624522"
+  },
+  {
+    name: "turtleclub_web.exe",
+    image: "/images/projects/turtleclub_web.webp",
+    tags: ["Sitio web", "Studio", "Astro + Tailwind"],
+    description: "Programé desde cero el sitio web oficial de Turtle Club (hoy desactualizado), con apartados para encontrar sus proyectos, información del staff y contacto.",
+    url: "https://turtleclub.dev"
+  },
+  {
+    name: "xspawn.exe",
+    image: "https://wiki.drygo.dev/docs/xspawn/og.jpg",
+    tags: ["Puntos de Spawn", "API", "Utilidad"],
+    description: "xSpawn es un sistema flexible y potente diseñado para dar a los administradores de servidores control total sobre los puntos de aparición de los jugadores.",
+    url: "https://modrinth.com/plugin/xspawn",
+    github: "https://github.com/33drygo/xSpawn",
+  },
+  {
+    name: "uhc_baguette.exe",
+    image: "/images/projects/uhc_baguette.webp",
+    tags: ["2025", "UHC", "PvP", "Francia"],
+    description: "Servidor de Minecraft UHC con temática francesa y mecánicas personalizadas. Desarrollado con Turtle Club.",
+    url: "https://x.com/turtleclubmc/status/1990156843549925699"
+  },
+  {
+    name: "sector_x.exe",
+    image: "/images/projects/sector_x.webp",
+    tags: ["2026", "Hardcore", "Fallout", "Lore"],
+    description: "Una serie de Minecraft hardcore donde los jugadores deberán enfrentarse a las consecuencias de un mundo sumido en la radiación.",
+    url: "https://x.com/Sector__X/status/2010116104492859685"
+  },
+  {
+    name: "minibook.exe",
+    image: "https://wiki.drygo.dev/docs/minibook/og.jpg",
+    tags: ["Libros", "Utilidad", "MiniMessage"],
+    description: "MiniBook es un sistema potente y flexible que permite a administradores y desarrolladores crear, personalizar y distribuir libros interactivos a los jugadores.",
+    url: "https://modrinth.com/plugin/minibook",
+    github: "https://github.com/33drygo/MiniBook",
+  },
+  {
+    name: "speedrun_boom.exe",
+    image: "/images/projects/speedrun_boom.webp",
+    tags: ["2026", "Speedrun", "Logros", "Duos"],
+    description: "35 dúos compiten contra el tiempo desbloqueando logros para mantener una bomba bajo control. Si se detienen, explota.",
+    url: "https://x.com/jose90YT/status/2036521683205439784"
+  }
+];
+---
+
+<section id="resume" class="w-full max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    {projects.map((project, projectIndex) => (
+      <div class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col transition-transform hover:-translate-y-1 hover:scale-101">
+
+        <!-- Titlebar -->
+        <div class="h-8 bg-[#573070] flex items-center justify-between px-2 shrink-0">
+          <span class="text-white text-sm font-bold truncate pr-2">{project.name}</span>
+          <button aria-hidden="true" tabindex="-1"
+            class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="w-3 h-3 text-black">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile: horizontal -->
+        <div class="flex sm:hidden flex-row flex-1">
+          <div class="border-r-2 border-black shrink-0 w-24">
+            <img src={project.image} alt={project.name} class="w-full h-full object-cover" />
+          </div>
+          <div class="p-2 flex flex-col flex-1 gap-2 min-w-0">
+            <div class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-2 flex-1 font-family-comic">
+              <p class="text-xs text-black leading-relaxed line-clamp-4">{project.description}</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0 min-w-0">
+              <div class="relative flex-1 min-w-0">
+                <div class="tag-fade-left pointer-events-none absolute left-0 top-0 h-full w-6 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to right, #d1d5db, transparent)"></div>
+                <div class="tag-fade-right pointer-events-none absolute right-0 top-0 h-full w-6 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to left, #d1d5db, transparent)"></div>
+                <div class="tag-scroll flex gap-1 overflow-x-auto scrollbar-none" data-index={`m-${projectIndex}`}>
+                  {project.tags.map((tag) => (
+                    <span class="px-1.5 py-0.5 bg-gray-200 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-[9px] font-bold text-black whitespace-nowrap shrink-0 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="flex gap-1 shrink-0">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    aria-label={`GitHub de ${project.name}`}
+                    class="px-2 py-1 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white inline-flex items-center">
+                    <GitHub class="size-4 text-black" />
+                  </a>
+                )}
+                <a href={project.url} target="_blank" rel="noopener noreferrer"
+                  class="px-2 py-1 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black font-bold text-xs hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white whitespace-nowrap">
+                  Info +
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop: vertical -->
+        <div class="hidden sm:flex flex-col flex-1">
+          <img src={project.image} alt={project.name} class="w-full h-44 object-cover" />
+          <div class="p-3 flex flex-col flex-1 gap-3">
+            <div class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-2 flex-1 font-family-comic">
+              <p class="text-sm text-black leading-relaxed">{project.description}</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 min-w-0">
+              <div class="relative flex-1 min-w-0">
+                <div class="tag-fade-left pointer-events-none absolute left-0 top-0 h-full w-8 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to right, #d1d5db, transparent)"></div>
+                <div class="tag-fade-right pointer-events-none absolute right-0 top-0 h-full w-8 z-10 opacity-0 transition-opacity"
+                  style="background: linear-gradient(to left, #d1d5db, transparent)"></div>
+                <div class="tag-scroll flex gap-1.5 overflow-x-auto scrollbar-none" data-index={`d-${projectIndex}`}>
+                  {project.tags.map((tag) => (
+                    <span class="px-2 py-0.5 bg-gray-200 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-xs font-bold text-black whitespace-nowrap shrink-0 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="flex gap-2 shrink-0">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    aria-label={`GitHub de ${project.name}`}
+                    class="px-3 py-2 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white inline-flex items-center transition-transform hover:scale-105">
+                    <GitHub class="size-4 text-black" />
+                  </a>
+                )}
+                <a href={project.url} target="_blank" rel="noopener noreferrer"
+                  class="px-5 py-2 bg-gray-300 border-2 border-t-white border-l-white border-b-black border-r-black text-black font-bold text-sm hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white transition-transform hover:scale-105 whitespace-nowrap">
+                  Mas info. +
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  function updateFades(el: HTMLElement) {
+    const wrapper = el.closest(".relative");
+    if (!wrapper) return;
+    const fadeLeft = wrapper.querySelector<HTMLElement>(".tag-fade-left");
+    const fadeRight = wrapper.querySelector<HTMLElement>(".tag-fade-right");
+    if (fadeLeft) fadeLeft.style.opacity = el.scrollLeft > 0 ? "1" : "0";
+    if (fadeRight) fadeRight.style.opacity = el.scrollLeft + el.clientWidth < el.scrollWidth - 1 ? "1" : "0";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll<HTMLElement>(".tag-scroll").forEach((el) => {
+      // Estado inicial
+      updateFades(el);
+      // Al hacer scroll
+      el.addEventListener("scroll", () => updateFades(el));
+      // Al cambiar el tamaño
+      new ResizeObserver(() => updateFades(el)).observe(el);
+    });
+  });
+</script>

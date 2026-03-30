@@ -1,0 +1,27 @@
+---
+import "@/styles/global.css";
+
+import TaskBar from "@/components/TaskBar.astro";
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>⋆｡𖦹°⭒˚｡⋆ 33drygo's place</title>
+    <link rel="icon" type="image/png" href="https://mineskin.eu/helm/33drygo" />
+    <meta
+      name="description"
+      content="33drygo website ~ development ⋆ mc events ⋆ music"
+    />
+  </head>
+  <body class="flex flex-col m-0 p-0 min-h-screen pb-10 overflow-x-hidden">
+    <div class="w-full max-w-screen-2xl mx-auto flex-1">
+      <main class="flex flex-col px-4 sm:px-8">
+        <slot />
+      </main>
+    </div>
+    <TaskBar />
+  </body>
+</html>

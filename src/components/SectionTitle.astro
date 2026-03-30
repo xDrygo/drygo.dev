@@ -1,0 +1,55 @@
+---
+// SectionTitle.astro
+
+interface Props {
+  title: string;
+  id: string;
+}
+const { title, id } = Astro.props;
+---
+
+<section
+  id={id}
+  class="w-full max-w-7xl mx-auto px-4 pt-20 sm:pt-30 pb-6 sm:pb-12 flex justify-center"
+>
+  <div
+    class="border-2 min-w-0 w-fit text-center transition-transform hover:-translate-y-1 hover:scale-101 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+  >
+    <!-- Barra de título -->
+    <div
+      class="h-6 sm:h-8 bg-[#573070] flex items-center justify-between px-2 gap-4 sm:gap-8"
+    >
+      <span class="text-white text-[10px] sm:text-sm font-bold"
+        >section.txt</span
+      >
+      <button
+        aria-hidden="true"
+        tabindex="-1"
+        class="w-4 h-4 sm:w-6 sm:h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="square"
+          class="w-2 h-2 sm:w-3 sm:h-3 text-black"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-2 sm:p-4">
+      <div
+        class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white py-1.5 px-3 sm:py-3 sm:px-10"
+      >
+        <h2 class="text-sm sm:text-2xl font-bold text-black font-family-comic">
+          {title}
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>

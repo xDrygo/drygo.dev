@@ -1,0 +1,192 @@
+---
+import Twitter from "@/icons/Twitter.astro";
+import Discord from "@/icons/Discord.astro";
+
+// --- Data Centralizada ---
+const aboutData = {
+  title: "workinnn.txt",
+  heading: "quieres trabajar conmigo?!?",
+  paragraphs: [
+    "¡Contactame por alguna de mis redes para hablar sobre tu proyecto!",
+    "Ahi podríamos acordar plazos, presupuesto y todo lo que necesites saber.",
+    "Sientete libre, soy una persona más con la que puedes trabajar, ¡Estaré encantado de escuchar las ideas que desees hacer realidad!",
+  ],
+};
+
+const contacts = [
+  {
+    icon: Twitter,
+    label: "twitter!",
+    href: "https://link.drygo.dev/twitter",
+    rotate: "-rotate-1",
+  },
+  {
+    icon: Discord,
+    label: "discordo",
+    href: "https://link.drygo.dev/discord",
+    rotate: "rotate-1",
+  },
+];
+
+const desktopLinks = [
+  {
+    icon: Twitter,
+    label: "twitter!",
+    href: "https://link.drygo.dev/twitter",
+    rotate: "-rotate-3",
+    pos: "absolute top-1/2 -translate-y-1/2 left-[10%]",
+    winClass: "contact-win-left",
+  },
+  {
+    icon: Discord,
+    label: "discordo",
+    href: "https://link.drygo.dev/discord",
+    rotate: "rotate-3",
+    pos: "absolute top-1/2 -translate-y-1/2 right-[10%]",
+    winClass: "contact-win-right",
+  },
+];
+---
+
+<section class="lg:hidden max-w-[500px] mx-auto px-4 font-family-comic">
+  <div class="flex flex-col gap-4">
+    <div
+      class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col"
+    >
+      <div class="h-8 bg-[#573070] flex items-center justify-between px-2">
+        <span class="text-white text-sm font-bold">{aboutData.title}</span>
+        <div
+          class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center"
+        >
+          <span class="text-black font-bold text-xs">×</span>
+        </div>
+      </div>
+      <div class="p-4 space-y-3">
+        <div
+          class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-3"
+        >
+          <h2 class="text-lg font-bold text-black">{aboutData.heading}</h2>
+        </div>
+        <div
+          class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-3"
+        >
+          {
+            aboutData.paragraphs.map((p, i) => (
+              <p
+                class={`text-xs text-black leading-relaxed ${i > 0 ? "mt-2" : ""}`}
+              >
+                {p}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      {
+        contacts.map((c) => (
+          <a
+            href={c.href}
+            target="_blank"
+            rel="noopener"
+            class={`border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${c.rotate}`}
+          >
+            <div class="h-6 bg-[#573070] flex items-center justify-between px-1.5">
+              <span class="text-white text-[10px] font-bold">{c.label}</span>
+              <div class="w-4 h-4 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center">
+                <span class="text-black text-[8px]">×</span>
+              </div>
+            </div>
+            <div class="px-3 py-3 flex items-center justify-center gap-3">
+              <c.icon class="size-5 text-black" />
+              <span class="text-black font-bold text-base">{c.label}</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="hidden lg:block relative w-full font-family-comic py-24">
+  <div
+    class="max-w-xl mx-auto border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col transition-transform hover:-translate-y-1"
+  >
+    <div class="h-8 bg-[#573070] flex items-center justify-between px-2">
+      <span class="text-white text-sm font-bold">{aboutData.title}</span>
+      <button
+        aria-hidden="true"
+        class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          class="w-3 h-3 text-black"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="p-6 space-y-4">
+      <div
+        class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-4"
+      >
+        <h2 class="text-2xl font-bold text-black">{aboutData.heading}</h2>
+      </div>
+      <div
+        class="bg-white border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white p-4"
+      >
+        {
+          aboutData.paragraphs.map((p, i) => (
+            <p
+              class={`text-sm text-black leading-relaxed ${i > 0 ? "mt-2" : ""}`}
+            >
+              {p}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {
+    desktopLinks.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener"
+        class={`${link.pos} ${link.rotate} ${link.winClass} border-2 border-gray-400 bg-gray-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 hover:scale-105`}
+      >
+        <div class="h-7 bg-[#573070] flex items-center justify-between px-2 gap-4">
+          <span class="text-white text-xs font-bold">{link.label}</span>
+          <div class="w-5 h-5 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center">
+            <span class="text-black text-[10px]">×</span>
+          </div>
+        </div>
+        <div class="px-6 py-4 flex items-center gap-3">
+          <link.icon class="size-6 text-black" />
+          <span class="text-black font-bold text-lg">{link.label}</span>
+        </div>
+      </a>
+    ))
+  }
+</section>
+
+<style>
+  .contact-win-left:hover {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    transform: translate(4px, 4px) rotate(-3deg);
+  }
+  .contact-win-right:hover {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+    transform: translate(-4px, 4px) rotate(3deg);
+  }
+</style>

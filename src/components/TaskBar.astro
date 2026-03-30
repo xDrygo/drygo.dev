@@ -1,0 +1,188 @@
+---
+import GitHub from "@/icons/GitHub.astro";
+import Twitter from "@/icons/Twitter.astro";
+import Discord from "@/icons/Discord.astro";
+import Modrinth from "@/icons/Modrinth.astro";
+
+const navItems = [
+  {
+    label: "Comisiones",
+    href: "/comissions",
+    img: "/images/links/comissions.png",
+    imgSize: 16,
+    internal: true,
+  },
+  {
+    label: "Proyectos",
+    href: "/projects",
+    img: "/images/links/projects.png",
+    imgSize: 16,
+    internal: true,
+  },
+  {
+    label: "Wiki",
+    href: "https://wiki.drygo.dev",
+    img: "/images/links/wiki.png",
+    imgSize: 16,
+  },
+  {
+    label: "Blog",
+    href: "",
+    img: "/images/links/blog.png",
+    imgSize: 16,
+    toast: "En construcción...",
+  },
+];
+
+const socials = [
+  {
+    icon: Twitter,
+    href: "https://link.drygo.dev/twitter",
+    label: "Twitter",
+    size: "w-3.5 h-3.5",
+  },
+  {
+    icon: Discord,
+    href: "https://link.drygo.dev/discord",
+    label: "Discord",
+    size: "w-4 h-4",
+  },
+  {
+    icon: GitHub,
+    href: "https://link.drygo.dev/github",
+    label: "GitHub",
+    size: "w-4 h-4",
+  },
+  {
+    icon: Modrinth,
+    href: "https://link.drygo.dev/modrinth",
+    label: "Modrinth",
+    size: "w-4 h-4",
+  },
+];
+
+const isHome = Astro.url.pathname === "/";
+const asd = isHome ? "#" : "/";
+---
+
+<footer
+  class="fixed bottom-0 left-0 w-full border-t-2 border-t-white border-gray-500 bg-gray-300 shadow-[0_-2px_0_0_rgba(255,255,255,0.8)] font-family-comic z-50 opacity-30 hover:opacity-100 transition-all duration-400 backdrop-blur"
+>
+  <div class="flex items-center h-10 px-1 gap-1">
+    <!-- Botón Start -->
+    <a
+      href={asd}
+      class="flex items-center gap-1.5 px-3 h-7 bg-gray-300 border-2
+    border-t-white border-l-white border-b-black border-r-black font-bold
+    text-xs text-black hover:bg-gray-400 active:border-t-black
+    active:border-l-black active:border-b-white active:border-r-white shrink-0
+    transition-transform hover:-translate-y-px hover:scale-101"
+    >
+      <img src="images/win.webp" alt="start" class="w-4 h-4" />
+      33
+    </a>
+
+    <!-- Separador -->
+    <div
+      class="w-px h-7 border-l border-gray-500 border-r border-r-white mx-1 shrink-0"
+    >
+    </div>
+
+    <!-- Nav items -->
+    <div
+      class="flex items-center gap-1 overflow-x-clip flex-1 scrollbar-none font-family-comic"
+    >
+      {
+        navItems.map((item) =>
+          item.toast ? (
+            <button
+              data-toast={item.toast}
+              class="toast-btn relative flex items-center gap-1.5 px-3 h-7 bg-gray-300 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-xs font-bold text-black hover:bg-gray-400 active:border-t-gray-600 active:border-l-gray-600 active:border-b-white active:border-r-white whitespace-nowrap shrink-0 transition-transform hover:-translate-y-px hover:scale-101"
+            >
+              <img
+                src={item.img}
+                alt={item.label}
+                width={item.imgSize}
+                height={item.imgSize}
+                style="image-rendering: pixelated"
+              />
+              {item.label}
+              <span class="btn-toast absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-black text-red-400 text-[12px] px-1.5 py-0.5 whitespace-nowrap opacity-0 pointer-events-none transition-opacity">
+                {item.toast}
+              </span>
+            </button>
+          ) : (
+            <a
+              href={item.href}
+              target={item.internal ? undefined : "_blank"}
+              rel={item.internal ? undefined : "noopener noreferrer"}
+              class="flex items-center gap-1.5 px-3 h-7 bg-gray-300 border-2 border-t-white border-l-white border-b-gray-600 border-r-gray-600 text-xs font-bold text-black hover:bg-gray-400 active:border-t-gray-600 active:border-l-gray-600 active:border-b-white active:border-r-white whitespace-nowrap shrink-0 transition-transform hover:-translate-y-px hover:scale-101"
+            >
+              <img
+                src={item.img}
+                alt={item.label}
+                width={item.imgSize}
+                height={item.imgSize}
+                style="image-rendering: pixelated"
+              />
+              {item.label}
+            </a>
+          ),
+        )
+      }
+    </div>
+
+    <!-- Separador -->
+    <div
+      class="hidden sm:block w-px h-7 border-l border-gray-500 border-r border-r-white mx-1 shrink-0"
+    >
+    </div>
+
+    <!-- System tray: redes sociales + reloj -->
+    <div
+      class="hidden sm:flex items-center gap-1 shrink-0 border-2 border-t-gray-600 border-l-gray-600 border-b-white border-r-white px-2 h-7"
+    >
+      {
+        socials.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            class="flex items-center justify-center w-5 h-5 hover:bg-gray-400 transition-transform hover:scale-101"
+          >
+            <social.icon class={`${social.size} text-black`} />
+          </a>
+        ))
+      }
+
+      <div
+        class="w-px h-4 border-l border-gray-500 border-r border-r-white mx-1"
+      >
+      </div>
+
+      <span
+        id="taskbar-clock"
+        class="text-xs font-bold text-black tabular-nums w-10 text-center"
+        >33:33</span
+      >
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons =
+        document.querySelectorAll<HTMLButtonElement>(".toast-btn");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const toast = btn.querySelector<HTMLElement>(".btn-toast");
+          if (!toast) return;
+          toast.style.opacity = "1";
+          setTimeout(() => {
+            toast.style.opacity = "0";
+          }, 2000);
+        });
+      });
+    });
+  </script>
+</footer>

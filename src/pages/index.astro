@@ -1,0 +1,31 @@
+---
+import Resume from "@/components/index/Resume.astro";
+import Events from "@/components/index/Events.astro";
+import TechStack from "@/components/index/TechStack.astro";
+import Contact from "@/components/index/Contact.astro";
+import Layout from "@/layouts/Layout.astro";
+import Music from "@/components/index/Music.astro";
+import Studios from "@/components/index/Studios.astro";
+import Hero from "@/components/index/Hero.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+---
+
+<Layout>
+  <Hero />
+  <SectionTitle title="sobreee mí o(*￣▽￣*)ブ" id="resume" />
+  <Resume />
+  <SectionTitle title="eventos destacadosss `(*>﹏<*)′" id="events" />
+  <Events />
+  <SectionTitle
+    title="creadores y studios connn quienes trabajé ヾ(•ω•`)o"
+    id="studios"
+  />
+  <Studios />
+  <SectionTitle title="tech stackkkk ( •̀ ω •́ )y" id="techstack" />
+  <TechStack />
+  <SectionTitle title="contacctooo ( •̀ ω •́ )✧" id="contact" />
+  <Contact />
+  <SectionTitle title="drygo's fav songs (p≧w≦q)" id="music" />
+  <Music />
+  <div class="mb-25"></div>
+</Layout>
