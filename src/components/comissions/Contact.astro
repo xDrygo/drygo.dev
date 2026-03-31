@@ -16,13 +16,13 @@ const aboutData = {
 const contacts = [
   {
     icon: Twitter,
-    label: "twitter!",
+    label: "contactame por twitter!",
     href: "https://link.drygo.dev/twitter",
     rotate: "-rotate-1",
   },
   {
     icon: Discord,
-    label: "discordo",
+    label: "contactam por discord!",
     href: "https://link.drygo.dev/discord",
     rotate: "rotate-1",
   },
@@ -31,18 +31,18 @@ const contacts = [
 const desktopLinks = [
   {
     icon: Twitter,
-    label: "twitter!",
+    label: ["contactame", "por twitter!"],
     href: "https://link.drygo.dev/twitter",
     rotate: "-rotate-3",
-    pos: "absolute top-1/2 -translate-y-1/2 left-[10%]",
+    pos: "absolute top-1/2 -translate-y-1/2 left-[5%]",
     winClass: "contact-win-left",
   },
   {
     icon: Discord,
-    label: "discordo",
+    label: ["contactame", "por discord!"],
     href: "https://link.drygo.dev/discord",
     rotate: "rotate-3",
-    pos: "absolute top-1/2 -translate-y-1/2 right-[10%]",
+    pos: "absolute top-1/2 -translate-y-1/2 right-[5%]",
     winClass: "contact-win-right",
   },
 ];
@@ -173,7 +173,14 @@ const desktopLinks = [
         </div>
         <div class="px-6 py-4 flex items-center gap-3">
           <link.icon class="size-6 text-black" />
-          <span class="text-black font-bold text-lg">{link.label}</span>
+          <span class="text-black font-bold text-lg">
+            {link.label.map((line, i) => (
+              <>
+                {line}
+                {i < link.label.length - 1 && <br />}
+              </>
+            ))}
+          </span>
         </div>
       </a>
     ))
