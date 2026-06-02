@@ -1,6 +1,12 @@
 ---
 const studios = [
   {
+    name: "Screaming LAB",
+    role: "Programación (Proyectos que no puedo mencionar)",
+    logo: "/images/studios/screaming_lab.webp",
+    color: "#7a76b0",
+  },
+  {
     name: "Koryfi Studio",
     role: "Fundador, Desarrollo, Diseño",
     logo: "/images/studios/koryfi.webp",
@@ -33,7 +39,7 @@ const studios = [
 ];
 ---
 
-<section class="w-full max-w-3xl mx-auto">
+<section class="w-full max-w-4xl mx-auto">
   <div
     class="border-2 border-gray-400 bg-gray-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 hover:scale-101"
   >
@@ -104,7 +110,7 @@ const studios = [
       </div>
 
       <!-- Desktop: grid -->
-      <div class="hidden sm:grid grid-cols-3 md:grid-cols-5 gap-3">
+      <div class="hidden sm:grid grid-cols-3 md:grid-cols-6 gap-3">
         {
           studios.map((studio) => (
             <div
