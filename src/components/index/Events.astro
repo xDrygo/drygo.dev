@@ -3,23 +3,15 @@ const projects = [
   {
     name: "speedrun_boss.exe",
     image: "/images/projects/speedrun_boss.webp",
-    tags: ["Game", "Speedrun", "Challenge"],
+    tags: ["2025", "Game", "Speedrun", "Challenge"],
     description:
       "Un evento competitivo de speedrun donde 16 duos compiten para derrotar a todos los bosses de Minecraft y conseguir el título de Speedrun Boss.",
     url: "https://x.com/jose90YT/status/1909431398710104545",
   },
   {
-    name: "rushbomb.exe",
-    image: "/images/projects/rushbomb.webp",
-    tags: ["Action", "Funky", "Explosive"],
-    description:
-      "Un evento de 165 jugadores compitiendo en juegos explosivos de TNT Tag. Desarrollado con Turtle Club.",
-    url: "https://x.com/kansuoficial/status/1926130477871624522",
-  },
-  {
     name: "uhc_baguette.exe",
     image: "/images/projects/uhc_baguette.webp",
-    tags: ["Minecraft", "UHC", "Server"],
+    tags: ["2025", "PvP", "UHC", "Server"],
     description:
       "Servidor de Minecraft UHC con temática francesa y mecánicas personalizadas. Desarrollado con Turtle Club.",
     url: "https://x.com/turtleclubmc/status/1990156843549925699",
@@ -27,7 +19,7 @@ const projects = [
   {
     name: "sector_x.exe",
     image: "/images/projects/sector_x.webp",
-    tags: ["Hardcore", "Fallout", "Lore"],
+    tags: ["2026", "Hardcore", "Fallout", "Lore"],
     description:
       "Una serie de Minecraft hardcore donde los jugadores deberán enfrentarse a las consecuencias de un mundo sumido en la radiación.",
     url: "https://x.com/Sector__X/status/2010116104492859685",
@@ -35,7 +27,7 @@ const projects = [
   {
     name: "speedrun_boom.exe",
     image: "/images/projects/speedrun_boom.webp",
-    tags: ["Speedrun", "Advancements", "Challenge"],
+    tags: ["2026", "Speedrun", "Advancements", "Challenge"],
     description:
       "35 dúos compiten contra el tiempo desbloqueando logros para mantener una bomba bajo control. Si se detienen, explota.",
     url: "https://x.com/jose90YT/status/2036521683205439784",
@@ -47,6 +39,14 @@ const projects = [
     description:
       "100 jugadores abren huevos con loot aleatorio para equiparse y enfrentarse en la batalla final. ",
     url: "https://x.com/jose90YT/status/2057316331540668612",
+  },
+  {
+    name: "copa_sulfuro.exe",
+    image: "/images/projects/copa_sulfuro.webp",
+    tags: ["2026", "Soccer", "Funky", "Tournament"],
+    description:
+      "16 países se enfrentan en un torneo de fútbol en Minecraft. Regatea, patea y golea para llevar a tu país a la victoria.",
+    url: "https://x.com/33drygo/status/2080787521005584461",
   },
 ];
 ---
@@ -62,8 +62,8 @@ const projects = [
               {project.name}
             </span>
             <button
-              aria-hidden="true"
-              tabindex="-1"
+              data-close
+              aria-label="Cerrar ventana"
               class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center shrink-0"
             >
               <svg
@@ -138,8 +138,8 @@ const projects = [
               {project.name}
             </span>
             <button
-              aria-hidden="true"
-              tabindex="-1"
+              data-close
+              aria-label="Cerrar ventana"
               class="w-6 h-6 bg-gray-300 border border-t-white border-l-white border-b-black border-r-black flex items-center justify-center hover:bg-gray-400 active:border-t-black active:border-l-black active:border-b-white active:border-r-white shrink-0"
             >
               <svg

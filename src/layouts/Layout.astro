@@ -23,5 +23,16 @@ import TaskBar from "@/components/TaskBar.astro";
       </main>
     </div>
     <TaskBar />
+
+    <script>
+      document.addEventListener("click", (e) => {
+        const target = e.target as Element | null;
+        const btn = target?.closest("[data-close]");
+        const win = btn?.parentElement?.parentElement;
+        if (!(win instanceof HTMLElement)) return;
+        win.dataset.closed = "";
+        win.style.display = "none";
+      });
+    </script>
   </body>
 </html>
